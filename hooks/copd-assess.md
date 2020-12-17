@@ -1,4 +1,4 @@
-# <mark>`copd-assessment`</mark>
+# <mark>`copd-assess`</mark>
 
 | Metadata | Value
 | ---- | ----
