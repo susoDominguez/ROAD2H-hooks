@@ -1,9 +1,9 @@
-# <mark>`copd-group-review`</mark>
+# <mark>`copd-assessment`</mark>
 
 | Metadata | Value
 | ---- | ----
 | specificationVersion | 1.1
-| hookVersion | 1.1
+| hookVersion | 2,0
 | hookMaturity | [0 - Draft](../../specification/1.0/#hook-maturity-model)
 
 ## Workflow
