@@ -1,0 +1,120 @@
+{
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+  "fhirServer": "https://example.org/fhir",
+  "hook": "copd-group-review",
+  "context":
+    {
+     "patient": {
+        "id": "1677163",
+        "birthDate": "1970-10-03T00:00:00+01:00"
+      },
+      "copd_diagnosis" : {
+        "resourceType": "Condition",
+        "id": "copd_diagnosis",
+        "code": {
+          "coding": [
+            {
+              "system": "https://mediately.co/hr/icd/J00-J99/set/J40-J47/cls/J44.8/druga-specificirana-kroni%C4%8Dna-opstruktivna-plu%C4%87na-bolest?q=j44.8",
+              "code": "J44.8",
+              "display": "COPD diagnosis"
+            }
+          ]
+        },
+        "recordedDate": "2020-10-26T18:00:00+01:00"
+      },
+      "cat_score_prev" : {
+        "resourceType": "Observation",
+        "id": "cat_score_prev",
+        "status": "final",
+        "valueInteger": 8
+      },
+      "cat_score": {
+        "resourceType": "Observation",
+        "id": "cat_score",
+        "status": "final",
+        "valueInteger": 12
+      },
+      "mmrc_prev": {
+        "resourceType": "Observation",
+        "id": "mmrc_prev",
+        "status": "final",
+        "valueInteger": 1
+      },
+      "mmrc": {
+        "resourceType": "Observation",
+        "id": "mmrc",
+        "status": "final",
+        "valueInteger": 0
+      },
+      "copd_exacerbations_number_prev": {
+        "resourceType": "Observation",
+        "id": "copd_exacerbations_number_prev",
+        "status": "final",
+        "valueInteger": 0
+      },
+      "copd_exacerbations_number": {
+        "resourceType": "Observation",
+        "id": "copd_exacerbations_number",
+        "status": "preliminary",
+        "valueInteger": 0
+      },
+      "medication": {
+        "resourceType": "Medication",
+        "id": "DrugTLaba",
+        "code": {
+          "coding": [
+            {
+              "system": "http://anonymous.org/data/DrugTLaba",
+              "code": "Laba",
+              "display": "administer LABA"
+            }
+          ]
+        }
+      },
+      "copd_group_prev": {
+        "resourceType": "Condition",
+        "id": "copd_group_prev",
+        "code": {
+          "coding": [
+            {
+              "system": "local",
+              "code": "B",
+              "display": "COPD group"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/1677163",
+          "display": "Link to patient"
+        },
+        "recordedDate": "2020-09-26T18:00:00+01:00"
+      }
+    },
+    {
+      "name": "asthma",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "asthma",
+        "code": {
+          "coding": [
+            {
+              "system": "https://mediately.co/rs/icd/J00-J99/set/J40-J47/cls/J45/astma",
+              "code": "J45",
+              "display": "asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/1677163",
+          "display": "Link to patient"
+        },
+        "recordedDate": "2020-09-26T18:00:00+01:00"
+      }
+    }
+    
+  ]
+}
+
+
+
+
