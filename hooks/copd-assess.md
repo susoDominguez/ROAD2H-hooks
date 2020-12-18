@@ -8,7 +8,7 @@
 
 ## Workflow
 
-<mark>The `copd-assessment` hook is triggered when the practicioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed. The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, it contains information on whether asthma is present as well as on the previous diagnosis: the identified COPD group and active medication.</mark>
+<mark>The `copd-assessment` hook is triggered when the practitioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed. The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, it contains information on whether asthma is present as well as on the previous diagnosis: the identified COPD group and active medication.</mark>
 
 ## Context
 
@@ -20,13 +20,16 @@ Field | Optionality | Prefetch Token | Type | Description
 <mark>`medication`</mark> | OPTIONAL | No | *object* | <mark>COPD medication currently active. Omission of this resource suggests  patient has just been newly diagnosed with COPD at this encounter.</mark>
 <mark>`previousAssessment`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Observations in 'final' state representing  COPD group, CAT score, mMRC dyspnoea scale and number of exacerbations as recorded on the previous COPD-related encounter. Omission of the bundle resource entirely suggests  patient has just been newly diagnosed with COPD at this encounter.</mark>
 <mark>`currentAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Observations in 'preliminary' state representing  CAT score, mMRC dyspnoea scale and number of exacerbations as measured at the current encounter.</mark>
-<mark>`asthma`</mark> | OPTIONAL | No | *Condition* | <mark>Condition resource denoting the presence of Asthma in patient's record.</mark>
+<mark>`asthma`</mark> | OPTIONAL | No | *object* | <mark>Condition resource denoting the presence of Asthma in patient's record.</mark>
 
 ### Examples
 
 
 ```json
 {
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+  "fhirServer": "https://example.org/fhir",
+  "hook": "copd-assess",
   "context": {
     "encounterId": "987654",
     "medication": {
@@ -232,4 +235,4 @@ Field | Optionality | Prefetch Token | Type | Description
 
 Version | Description
 ---- | ----
-1.2 | FHIR resource parameters
+2.1 | FHIR resource parameters

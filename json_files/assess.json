@@ -1,4 +1,7 @@
 {
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+  "fhirServer": "https://example.org/fhir",
+  "hook": "copd-assess",
   "context": {
     "encounterId": "987654",
     "medication": {
@@ -35,18 +38,49 @@
             ]
           },
           "valueString": "B",
-          "referenceRange": [
-            {
-              "low": {
-                "value": "A"
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+            "referenceRange": [
+              {
+                "high": {
+                  "value": "D",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Very Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "C",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "B",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Moderate Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "A",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Mild Chronic airflow limitation"
+                }
               }
-            },
-            {
-              "high": {
-                "value": "D"
-              }
-            }
-          ]
+            ]
         },
         {
           "resourceType": "Observation",
@@ -124,18 +158,49 @@
             ]
           },
           "valueString": "B",
-          "referenceRange": [
-            {
-              "low": {
-                "value": "A"
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+            "referenceRange": [
+              {
+                "high": {
+                  "value": "D",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Very Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "C",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "B",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Moderate Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "A",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Mild Chronic airflow limitation"
+                }
               }
-            },
-            {
-              "high": {
-                "value": "D"
-              }
-            }
-          ]
+            ]
         },
         {
           "resourceType": "Observation",
