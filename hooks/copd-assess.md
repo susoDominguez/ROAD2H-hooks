@@ -2,13 +2,13 @@
 
 | Metadata | Value
 | ---- | ----
-| specificationVersion | 1.1
+| specificationVersion | 2.1
 | hookVersion | 2,0
 | hookMaturity | [0 - Draft](../../specification/1.0/#hook-maturity-model)
 
 ## Workflow
 
-<mark>The `copd-assessment` hook is triggered when the practitioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed. The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, it contains information on whether asthma is present as well as on the previous diagnosis: the identified COPD group and active medication.</mark>
+<mark>The `copd-assess` hook is triggered when the practitioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed. The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, it contains information on whether asthma is present as well as on the previous diagnosis: the identified COPD group and active medication.</mark>
 
 ## Context
 

@@ -123,7 +123,7 @@
         {
           "resource": {
             "resourceType": "Observation",
-            "id": "copd_group",
+            "id": "copd_group_curr",
             "status": "preliminary",
             "code": {
               "coding": [
@@ -134,7 +134,11 @@
                 }
               ]
             },
-            "valueString": "B",
+            "valueQuantity": {
+              "value": "B",
+              "system": "http://unitsofmeasure.org",
+              "code": "{score}"
+            },
             "effectiveDateTime": "2018-03-11T16:07:54+00:00",
             "referenceRange": [
               {
@@ -158,7 +162,7 @@
                 }
               },
               {
-                "high": {
+                "low": {
                   "value": "B",
                   "system": "http://unitsofmeasure.org",
                   "code": "{score}"
@@ -181,7 +185,7 @@
           }
         },
         {
-          "resourceType": "CarePlan",
+          "resourceType": "CarePlan", //how to add preferences
           "id": "selected_treatments",
           "status": "active",
           "intent": "proposal",
@@ -232,6 +236,7 @@
           ]
         }
       ]
-    }
+    },
+    "preferences": ["Medication/DrugTLaba", "Medication/DrugTLama"]
   }
 }
