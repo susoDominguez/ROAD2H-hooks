@@ -32,7 +32,7 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
 {
   "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
   "fhirServer": "https://example.org/fhir",
-  "hook": "copd-assess",
+  "hook": "copd-careplan-suggest",
   "context": {
     "encounterId": "1234",
     "birthDate": "1970-10-03T00:00:00+01:00",
