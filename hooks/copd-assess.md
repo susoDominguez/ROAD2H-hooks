@@ -8,11 +8,10 @@
 
 ## Workflow
 
-<mark>The `copd-assess` hook is triggered when the practitioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed. The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, it contains information on whether asthma is present as well as on the previous diagnosis: the identified COPD group and active medication.</mark>
+<mark>The `copd-assess` hook is triggered when the practitioner is assessing the severity of the airflow limitation on the current patient to adjust medication, if needed.</mark>
 
 ## Context
-
-<mark></mark>
+<mark>The context contains pairs of measurements of CAT score and mMRC dyspnoea scale, one taken on the current encounter and another as stored on the previous visit. Similarly for the number of exacerbations. Additionally, the context contains information on whether asthma is present along with the previous diagnosis, that is, the identified COPD group and active medication.</mark>
 
 Field | Optionality | Prefetch Token | Type | Description
 ----- | -------- | ---- | ---- | ----
@@ -59,31 +58,70 @@ Field | Optionality | Prefetch Token | Type | Description
           "code": {
             "coding": [
               {
-                "system": "",
-                "code": "",
-                "display": "GOLD classification for chronic obstructive pulmonary disease (COPD)"
+                "system": "http://snomed.info/sct",
+                "code": "13645005",
+                "display": "Chronic airflow limitation"
               }
             ]
           },
-          "valueString": "B",
-          "referenceRange": [
-            {
-              "low": {
-                "value": "A"
+          "valueQuantity": {
+            "value": "B",
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+            "referenceRange": [
+              {
+                "high": {
+                  "value": "D",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Very Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "C",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "B",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Moderate Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "A",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Mild Chronic airflow limitation"
+                }
               }
-            },
-            {
-              "high": {
-                "value": "D"
-              }
-            }
-          ]
+            ]
         },
         {
           "resourceType": "Observation",
           "id": "cat_score_prev",
           "status": "final",
-          "valueInteger": 8,
+          "valueQuantity": {
+            "value": 8,
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
           "code": {
             "coding": [
               {
@@ -92,19 +130,37 @@ Field | Optionality | Prefetch Token | Type | Description
                 "display": "COPD Assessment Test (CAT) score"
               }
             ]
-          }
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+          "referenceRange": [
+            {
+              "low": {
+                "value": "0"
+              }
+            },
+            {
+              "high": {
+                "value": "4"
+              }
+            }
+          ]
         },
         {
           "resourceType": "Observation",
           "id": "mmrc_prev",
           "status": "final",
-          "valueInteger": 1,
+          "valueQuantity": {
+            "value": 0,
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
           "code": {
             "coding": [
               {
-                "system": "",
-                "code": "",
-                "display": "modified Medical Research Council (mMRC) dyspnea scores"
+                "system": "local-system",
+                "code": "codedValue",
+                "display": "modified Medical Research Council (mMRC) dyspnea score"
               }
             ]
           },
@@ -134,7 +190,20 @@ Field | Optionality | Prefetch Token | Type | Description
                 "display": "Number of COPD exacerbations"
               }
             ]
-          }
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+          "referenceRange": [
+            {
+              "low": {
+                "value": "0"
+              }
+            },
+            {
+              "high": {
+                "value": "4"
+              }
+            }
+          ]
         }
       ]
     },
@@ -143,36 +212,75 @@ Field | Optionality | Prefetch Token | Type | Description
       "entry": [
         {
           "resourceType": "Observation",
-          "id": "copd_group_prev",
-          "status": "final",
+          "id": "copd_group_curr",
+          "status": "preliminary",
           "code": {
             "coding": [
               {
-                "system": "",
-                "code": "",
-                "display": "GOLD classification for chronic obstructive pulmonary disease (COPD)"
+                "system": "http://snomed.info/sct",
+                "code": "13645005",
+                "display": "Chronic airflow limitation"
               }
             ]
           },
-          "valueString": "B",
+          "valueQuantity": {
+            "value": "B",
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
           "referenceRange": [
-            {
-              "low": {
-                "value": "A"
+              {
+                "high": {
+                  "value": "D",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Very Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "high": {
+                  "value": "C",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Severe Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "B",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Moderate Chronic airflow limitation"
+                }
+              },
+              {
+                "low": {
+                  "value": "A",
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "type": {
+                  "text": "Mild Chronic airflow limitation"
+                }
               }
-            },
-            {
-              "high": {
-                "value": "D"
-              }
-            }
-          ]
+            ]
         },
         {
           "resourceType": "Observation",
-          "id": "cat_score",
+          "id": "cat_score_curr",
           "status": "preliminary",
-          "valueInteger": 7,
+          "valueQuantity": {
+            "value": 8,
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
           "code": {
             "coding": [
               {
@@ -181,19 +289,37 @@ Field | Optionality | Prefetch Token | Type | Description
                 "display": "COPD Assessment Test (CAT) score"
               }
             ]
-          }
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+          "referenceRange": [
+            {
+              "low": {
+                "value": "0"
+              }
+            },
+            {
+              "high": {
+                "value": "4"
+              }
+            }
+          ]
         },
         {
           "resourceType": "Observation",
-          "id": "mmrc",
+          "id": "mmrc_curr",
           "status": "preliminary",
-          "valueInteger": 0,
+          "valueQuantity": {
+            "value": 0,
+            "system": "http://unitsofmeasure.org",
+            "code": "{score}"
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
           "code": {
             "coding": [
               {
-                "system": "",
-                "code": "",
-                "display": "modified Medical Research Council (mMRC) dyspnea scores"
+                "system": "local-system",
+                "code": "codedValue",
+                "display": "modified Medical Research Council (mMRC) dyspnea score"
               }
             ]
           },
@@ -212,7 +338,7 @@ Field | Optionality | Prefetch Token | Type | Description
         },
         {
           "resourceType": "Observation",
-          "id": "copd_exacerbations_number",
+          "id": "copd_exacerbations_number_curr",
           "status": "preliminary",
           "valueInteger": 0,
           "code": {
@@ -223,12 +349,26 @@ Field | Optionality | Prefetch Token | Type | Description
                 "display": "Number of COPD exacerbations"
               }
             ]
-          }
+          },
+          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
+          "referenceRange": [
+            {
+              "low": {
+                "value": "0"
+              }
+            },
+            {
+              "high": {
+                "value": "4"
+              }
+            }
+          ]
         }
       ]
     }
   }
 }
+
 ```
 
 ## Change Log

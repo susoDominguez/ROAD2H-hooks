@@ -8,7 +8,7 @@
 
 ## Workflow
 
-<mark>The `copd-careplan-suggest` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD COPD group (A, B, C, D) along with a selection of COPD medication treatments. The CDS Service then provides a collection of personalised care plans based on GOLD COPD 2017 where each of which contains non-conflictive clinical recommendations taking into account practitioner/patient choices -GOLD COPD group and medications-,immunization, lifestyle -e.g., smoker status- and comorbidities present in the patient's record which could potentially interfere with the COPD treatment.</mark>
+<mark>The `copd-careplan-suggest` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD COPD group (A, B, C, D) along with a selection of potential COPD medication treatments. The CDS Service then provides a collection of personalised care plans based on GOLD COPD 2017 where each of which contains non-conflictive clinical recommendations taking into account practitioner/patient choices -GOLD COPD group and medications-,immunization, lifestyle -e.g., smoking status- and comorbidities present in the patient's record which could potentially interfere with the COPD treatment.</mark>
 
 ## Context
 
@@ -18,12 +18,12 @@ Field | Optionality | Prefetch Token | Type | Description
 ----- | -------- | ---- | ---- | ----
 <mark>`encounterId`</mark> | OPTIONAL | No | *string* | <mark>identifier of current encounter</mark>
 <mark>`birthDate`</mark> | REQUIRED | No | *string* | <mark>date of birth of patient, used to identify whether Pneumococcal vaccine should be suggested for patients of 65 years of age or older</mark>
-<mark>`smokingStatus`</mark> | REQUIRED | No | *object* | <mark>Observation which identifies current patient as a regular smoker</mark>
+<mark>`smokingStatus`</mark> | REQUIRED | No | *object* | <mark>Observation which identifies current patient as either a regular smoker or not</mark>
 <mark>`comorbidities`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Conditions representing CKD or CVD diagnosis which are present in the patient's record</mark>
 <mark>`immunizationStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Immunizations denoting whether the patient has taken the annual influenza vaccine or the pneumococcal vaccine</mark>
 <mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Observation and CarePlan representing the identified GOLD COPD group for the former, and COPD treatments -implemented as Medication resources- suitable for the identified group, for the latter. Observation and Medication resources have `preliminary` status</mark>
-<mark>`preferences`</mark> | OPTIONAL | No | *array* | <mark>The FHIR id of the preferred selected medication(s).
-The preferences field references FHIR resources from the CarePlan in the copdAssessment Bundle. For example, Medication/DrugTLaba.</mark>
+<mark>`preferences`</mark> | OPTIONAL | No | *array* | <mark>The FHIR id(s) of the preferred  medication(s) from the initial selection made by the practitioner.
+The preferences field references FHIR resources from the CarePlan in the copdAssessment Bundle. For example, Medication/DrugTLaba .</mark>
 
 ### Example
 
