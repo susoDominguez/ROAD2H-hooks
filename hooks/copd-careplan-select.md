@@ -1,14 +1,14 @@
-# <mark>`copd-careplan-suggest`</mark>
+# <mark>`copd-careplan-select`</mark>
 
 | Metadata | Value
 | ---- | ----
 | specificationVersion | 2.1
-| hookVersion | 1.2
+| hookVersion | 1.3
 | hookMaturity | [0 - Draft](../../specification/1.0/#hook-maturity-model)
 
 ## Workflow
 
-<mark>The `copd-careplan-suggest` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD COPD group (A, B, C, D) along with a selection of potential COPD medication treatments. The CDS Service then provides a collection of personalised care plans based on GOLD COPD 2017 where each of which contains non-conflictive clinical recommendations taking into account practitioner/patient choices -GOLD COPD group and medications-,immunization, lifestyle -e.g., smoking status- and comorbidities present in the patient's record which could potentially interfere with the COPD treatment.</mark>
+<mark>The `copd-careplan-select` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD COPD group (A, B, C, D) along with a selection of potential COPD medication treatments. The CDS Service then provides a collection of personalised care plans based on GOLD COPD 2017 where each of which contains non-conflictive clinical recommendations taking into account practitioner/patient choices -GOLD COPD group and medications-,immunization, lifestyle -e.g., smoking status- and comorbidities present in the patient's record which could potentially interfere with the COPD treatment.</mark>
 
 ## Context
 
@@ -32,7 +32,7 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
 {
   "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
   "fhirServer": "https://example.org/fhir",
-  "hook": "copd-careplan-suggest",
+  "hook": "copd-careplan-select",
   "context": {
     "encounterId": "1234",
     "birthDate": "1970-10-03T00:00:00+01:00",
