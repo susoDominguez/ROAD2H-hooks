@@ -1,0 +1,457 @@
+{
+  "cards": [
+    {
+      "summary": "assessment of COPD",
+      "indicator": "info",
+      "source": {
+        "label": "ROAD2H Clinical Decision Support System"
+      },
+      "suggestions": [
+        {
+          "label": "COPD assessment support",
+          "uuid": "2803202017350345",
+          "actions": [
+            {
+              "type": "update",
+              "description": "Update COPD assessment interface",
+              "resource": {
+                "resourceType": "Parameters",
+                "id": "copdAssessParameters",
+                "parameter": [
+                  {
+                    //could be removed
+                    "name": "patientId",
+                    "valueId": "1677163"
+                  },
+                  {
+                    //could be removed
+                    "name": "encounterId",
+                    "valueId": "1677163"
+                  },
+                  {
+                    "name": "medicationBundle",
+                    "resource": {
+                      "resourceType": "Bundle",
+                      "id": "medicationBundle",
+                      "type": "collection",
+                      "entry": [
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugCatSabaSama",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugCatSabaSama", //optional. Not a system currently. Removed?
+                                  "code": "SabaSama",
+                                  "display": "administer a combination of SABA and SAMA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTSaba",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTSaba",
+                                  "code": "Saba",
+                                  "display": "administer SABA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTSama",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTSama",
+                                  "code": "Sama",
+                                  "display": "administer SAMA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugCatLabaLama",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugCatLabaLama",
+                                  "code": "LabaLama",
+                                  "display": "administer a combination of LABA and LAMA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTLaba",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTLaba",
+                                  "code": "Laba",
+                                  "display": "administer LABA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTLama",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTLama",
+                                  "code": "Lama",
+                                  "display": "administer LAMA"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTLabaIcs",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTLabaIcs",
+                                  "code": "LabaIcs",
+                                  "display": "administer a combination of LABA and ICS"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "resource": {
+                            "resourceType": "Medication",
+                            "id": "DrugTLabaLamaIcs",
+                            "code": {
+                              "coding": [
+                                {
+                                  "system": "http://anonymous.org/data/DrugTLabaLamaIcs",
+                                  "code": "LabaLamaIcs",
+                                  "display": "administer a combination of LABA, LAMA and ICS"
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "copdGroupA",
+                    "part": [
+                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      {
+                        "name": "code",
+                        "valueCoding": {
+                          "system": "http://snomed.info/sct", //check
+                          "code": "313296004"
+                        }
+                      },
+                      {
+                        "name": "medicationPreference1",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list1",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLaba"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference2",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list2",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatSabaSama"
+                              }
+                            },
+                            {
+                              "item": {
+                                "reference": "Condition/example2"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference3",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list3",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTSaba"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference4",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list4",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTSama"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "copdGroupB",
+                    "part": [
+                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      {
+                        "name": "code",
+                        "valueCoding": {
+                          "system": "http://snomed.info/sct", //check
+                          "code": "313297008"
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_1",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list1",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLaba"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_2",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list2",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLabaLama"
+                              }
+                            },
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLama"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "copdGroupC",
+                    "part": [
+                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      {
+                        "name": "code",
+                        "valueCoding": {
+                          "system": "http://snomed.info/sct", //check
+                          "code": "313299006"
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_1",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list1",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLamaLaba"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_2",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list2",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLabaIcs"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_3",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list3",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLaba"
+                              }
+                            },
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLama"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "copdGroupD",
+                    "part": [
+                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      {
+                        "name": "code",
+                        "valueCoding": {
+                          "system": "http://snomed.info/sct", //check
+                          "code": "135836000"
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_1",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list1",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLabaIcs"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_2",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list2",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLabaLama"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_3",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list3",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLabaLamaIcs"
+                              }
+                            },
+                            {
+                              "item": {
+                                "reference": "Medication/DrugCatLama"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "name": "medicationPreference_4",
+                        "resource": {
+                          "resourceType": "List",
+                          "id": "list4",
+                          "status": "current",
+                          "mode": "changes",
+                          "entry": [
+                            {
+                              "item": {
+                                "reference": "Medication/DrugTLaba"
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "assessedCopdStage",
+                    "valueCoding": {
+                      "system": "http://snomed.info/sct", //check
+                      "code": "313296004"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "selectionBehaviour": "at-most-one"
+    }
+  ]
+}

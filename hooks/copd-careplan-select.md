@@ -34,8 +34,8 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
   "fhirServer": "https://example.org/fhir",
   "hook": "copd-careplan-select",
   "context": {
-    "encounterId": "1234",
-    "birthDate": "1970-10-03T00:00:00+01:00",
+    "encounterId": "1234", 
+    "birthDate": "1970-10-03T00:00:00+01:00", 
     "smokingStatus": {
       "resourceType": "Observation",
       "id": "smoking_status",
@@ -43,12 +43,12 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
       "code": {
         "coding": [
           {
-            "system": "http://loinc.org",
-            "code": "63638-1",
-            "display": "Smoking status [FTND]"
+            "system": "https://www.snomed.org/",
+            "code": "229819007",
+            "display": "Tobacco use and exposure (observable entity)"
           }
         ],
-        "text": "Smoking status"
+        "text": "Smoking status" 
       },
       "valueCodeableConcept": {
         "coding": [
@@ -59,10 +59,34 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
           }
         ],
         "text": "Non-smoker"
-      }
+      },
+      "referenceRange": [
+        {
+          "low": {
+            "system": "http://snomed.info/sct",
+            "code": "8392000",
+            "display": "Non-smoker (finding)"
+          },
+          "type": {
+            "text": "Non-smoker"
+          }
+        },
+        {
+          "high": {
+            "system": "http://snomed.info/sct",
+            "code": "77176002",
+            "display": "Smoker (finding)"
+          },
+          "type": {
+            "text": "Smoker"
+          }
+        }
+      ]
     },
     "comorbidities": {
       "resourceType": "Bundle",
+      "id": "comorbiditiesBundle",
+      "type": "collection",
       "entry": [
         {
           "resource": {
@@ -73,14 +97,13 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "49601007",
-                  "display": "CVD - cardiovascular disease"
+                  "display": "Disorder of cardiovascular system (disorder)"
                 }
               ],
-              "text": "CVD"
+              "text": "Cvd"
             },
             "subject": {
-              "reference": "Patient/1677163",
-              "display": "Link to patient"
+              "reference": "Patient/1677163"
             },
             "recordedDate": "2020-10-26T18:00:00+01:00"
           }
@@ -94,14 +117,13 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "709044004",
-                  "display": "Chronic renal impairment"
+                  "display": "Chronic kidney disease (disorder)"
                 }
               ],
-              "text": "CKD"
+              "text": "Ckd"
             },
             "subject": {
-              "reference": "Patient/1677163",
-              "display": "Link to patient"
+              "reference": "Patient/1677163"
             },
             "recordedDate": "2020-10-26T18:00:00+01:00"
           }
@@ -110,6 +132,8 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
     },
     "immunizationStatus": {
       "resourceType": "Bundle",
+      "id": "immunizationStatusBundle",
+      "type": "collection",
       "entry": [
         {
           "resource": {
@@ -120,8 +144,8 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
-                  "code": "46233009",
-                  "display": "Influenza vaccine"
+                  "code": "1181000221105",
+                  "display": "Vaccine product containing only Influenza virus antigen (medicinal product)"
                 }
               ],
               "text": "FLU vaccine"
@@ -150,66 +174,74 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
     },
     "copdAssessment": {
       "resourceType": "Bundle",
+      "id": "copdAssessmentBundle",
+			"type": "collection",
       "entry": [
         {
           "resource": {
             "resourceType": "Observation",
-            "id": "copd_group",
+            "id": "copd_group_curr",
             "status": "preliminary",
             "code": {
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "13645005",
-                  "display": "Chronic airflow limitation"
+                  "display": "Chronic obstructive lung disease (disorder)"
                 }
-              ]
+              ],
+              "text": "COPD"
             },
-            "valueQuantity": {
-              "value": "B",
-              "system": "http://unitsofmeasure.org",
-              "code": "{score}"
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "313296004",
+                  "display": "Mild chronic obstructive pulmonary disease (disorder)"
+                }
+              ],
+              "text": "Copd group A"
             },
             "effectiveDateTime": "2018-03-11T16:07:54+00:00",
             "referenceRange": [
               {
-                "high": {
-                  "value": "D",
-                  "system": "http://unitsofmeasure.org",
-                  "code": "{score}"
+                "low": {
+                  "system": "http://snomed.info/sct",
+                  "code": "313296004",
+                  "display": "Mild chronic obstructive pulmonary disease (disorder)"
                 },
                 "type": {
-                  "text": "Very Severe Chronic airflow limitation"
-                }
-              },
-              {
-                "high": {
-                  "value": "C",
-                  "system": "http://unitsofmeasure.org",
-                  "code": "{score}"
-                },
-                "type": {
-                  "text": "Severe Chronic airflow limitation"
+                  "text": "Copd group A"
                 }
               },
               {
                 "low": {
-                  "value": "B",
-                  "system": "http://unitsofmeasure.org",
-                  "code": "{score}"
+                  "system": "http://snomed.info/sct",
+                  "code": "313297008",
+                  "display": "Moderate chronic obstructive pulmonary disease (disorder)"
                 },
                 "type": {
-                  "text": "Moderate Chronic airflow limitation"
+                  "text": "Copd group B"
                 }
               },
               {
-                "low": {
-                  "value": "A",
-                  "system": "http://unitsofmeasure.org",
-                  "code": "{score}"
+                "high": {
+                  "system": "http://snomed.info/sct",
+                  "code": "313299006",
+                  "display": "Severe chronic obstructive pulmonary disease (disorder)"
                 },
                 "type": {
-                  "text": "Mild Chronic airflow limitation"
+                  "text": "Copd group C"
+                }
+              },
+              {
+                "high": {
+                  "system": "http://snomed.info/sct",
+                  "code": "135836000",
+                  "display": "End stage chronic obstructive pulmonary disease (disorder)"
+                },
+                "type": {
+                  "text": "Copd group D"
                 }
               }
             ]
@@ -268,9 +300,10 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
         }
       ]
     },
-    "preferences": ["Medication/DrugTLaba", "Medication/DrugTLama"]
+    "preferences": ["Medication/DrugTLaba"] 
   }
 }
+
 
 ```
 
