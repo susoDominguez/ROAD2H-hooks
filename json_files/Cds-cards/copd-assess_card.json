@@ -197,11 +197,6 @@
                               "item": {
                                 "reference": "Medication/DrugCatSabaSama"
                               }
-                            },
-                            {
-                              "item": {
-                                "reference": "Condition/example2"
-                              }
                             }
                           ]
                         }

@@ -1,14 +1,14 @@
 {
 	"cards": [
 		{
-			"summary": "mitigated COPD proposed care plan",
+			"summary": "Decision support generated plans following GOLD COPD 2017 guideline",
 			"indicator": "info",
 			"source": {
-				"label": "Human-readable source label"
+				"label": "Decision support generated plans following GOLD COPD 2017 guideline"
 			},
 			"suggestions": [
 				{
-					"label": "COPD care plan decision support",
+					"label": "personalised COPD care plans",
 					"uuid": "CIG-2803202017350345",
 					"actions": [
 						{
@@ -19,23 +19,13 @@
 								"id": "careplanBundle",
 								"type": "collection",
 								"entry": [
-									{//this resource could be removed
-										"resource": {
-											"resourceType": "Patient",
-											"id": "pat1",
-											"active": true,
-											"birthDate": "1974-12-25"
-										}
-									},
 									{
-										//"fullUrl" REmoved as not in use and is not actual URL
 										"resource": {
 											"resourceType": "Medication",
 											"id": "DrugCatBetaAgonist",
 											"code": {
-												"coding": [
+												"coding": [//removed system field as these are not real clinical codes
 													{
-														"system": "http://anonymous.org/data/DrugCatBetaAgonist",
 														"code": "BetaAgonist",
 														"display": "administer Beta Agonists when cardiovascular disease is present"
 													}
@@ -50,7 +40,6 @@
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/DrugCatLabaLama",
 														"code": "LabaLama",
 														"display": "administer a combination of LABA and LAMA"
 													}
@@ -65,7 +54,6 @@
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/DrugTLaba",
 														"code": "Laba",
 														"display": "administer LABA"
 													}
@@ -80,7 +68,6 @@
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/DrugTLama",
 														"code": "Lama",
 														"display": "administer LAMA"
 													}
@@ -92,35 +79,66 @@
 										"resource": {
 											"resourceType": "Condition",
 											"id": "SitModAls",
-											"code": {
+											"severity": { //either (Condition.code and Condition.extension) or (Condition.severity and Condition.code)
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/SitModAls",
-														"code": "SitModAls",
-														"display": "having a moderate airflow limitation severity"
+													  "system": "http://snomed.info/sct",
+													  "code": "6736007",
+													  "display": " Moderate (severity modifier) (qualifier value)"
 													}
-												]
+												  ],
+												  "text": "moderate"
 											},
-											"subject": {
-												"reference": "Patient/pat1"
+											"code": {
+												"coding": [
+												  {
+													"system": "http://snomed.info/sct",
+													"code": "313297008",
+													"display": "Moderate chronic obstructive pulmonary disease (disorder)"
+												  }
+												],
+												"text": "moderate airflow limitation severity" //as shown in TMRCodingSystem.xlsx, sheet 'TMR data', column 'Display(English)'
+											  },
+											  "subject": {
+												"reference": "Patient/1677163"
+											},
+											"extension": { //given FHIR extension. I use it to provide the problem being assessed (without the severity). Sometimes Condition.code === Condition.extension.valueCodeableConcept
+												"url" :"http://hl7.org/fhir/StructureDefinition/condition-dueTo",
+												"valueCodeableConcept":  [ 
+													{
+													"system": "http://snomed.info/sct",
+													"code": "13645005",
+													"display": "Chronic obstructive pulmonary disease (disorder)"
+												  }
+												],
+												"text": "airflow limitation severity" //as shown in TMRCodingSystem.xlsx, sheet 'TMR data', column 'Display(English)'
 											}
 										}
 									},
 									{
 										"resource": {
-											"resourceType": "Condition",
+											"resourceType": "Observation",
 											"id": "SitPrQol",
-											"subject": {
-												"reference": "Patient/pat1"
-											},
+											"status": "preliminary",
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/SitPrQol",
-														"code": "SitPrQol",
-														"display": "having a poor quality of life"
+														"system": "http://snomed.info/sct",
+														"code": "405152002",
+														"display": "Quality of life satisfaction (observable entity)"
 													}
-												]
+												],
+												"text":"quality of life"
+											},
+											"valueCodeableConcept" : {
+												"coding": [
+													{
+														"system": "http://snomed.info/sct",
+														"code": "844582002",
+														"display": "Impaired quality of life (finding)"
+													}
+												],
+												"text": "poor quality of life"
 											}
 										}
 									},
@@ -128,156 +146,45 @@
 										"resource": {
 											"resourceType": "Condition",
 											"id": "SitLwRskCrd",
-											"subject": {
-												"reference": "Patient/pat1"
+											"severity": {
+												"coding": [
+													{
+													  "system": "http://snomed.info/sct",
+													  "code": "255604002",
+													  "display": "Mild (qualifier value)"
+													},
+													{
+														"system": "http://snomed.info/sct",
+														"code": "75976002",
+														"display": "Mild risk of (contextual qualifier) (qualifier value)"
+													  }
+												  ],
+												  "text": "mild (risk of)"
 											},
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/SitLwRskCrd",
-														"code": "SitLwRskCrd",
-														"display": "having a low risk of causing cardiac rythm disturbances"
+														"system": "http://snomed.info/sct",
+														"code": "698247007", //to be edited
+														"display": "Cardiac arrhythmia (disorder)" //to be edited
 													}
-												]
+												],
+												"text" : "(low risk of) causing cardiac rythm disturbances" //TMR DIsplay
 											}
-										}
-									},
-									{
-										"resource": {
-											"resourceType": "ForecastEffect",
-											"id": "SitLwRskCrd2SitHghRskCrdMn",
-											"typeOfEffect": "main-effect",
-											"typeOfEvent": "adverse-effect",
-											"subject": {
-												"reference": "Patient/pat1"
-											},
-											"appliesTo": {
-												"careActionInstance": [
-													{
-														"reference": "MedicationRequest/RecCOPD-BetaAgonistIncSitLwRskCrdShouldnot"
-													}
-												],
-												"conditionAddressed": {
-													"reference": "Condition/SitLwRskCrd"
-												}
-											},
-											"expectedOutcomeCode": {
-												"coding": [
-													{
-														"system": "http://anonymous.org/data/SitHghRskCrd",
-														"code": "SitHghRskCrd",
-														"display": "having a high risk of causing cardiac rythm disturbances"
-													}
-												]
-											},
-											"targetMeasurement": {
-												"measuredProperty": {
-													"coding": [
-														{
-															"system": "http://anonymous.org/data/PropRskCrd",
-															"code": "PropRskCrd",
-															"display": "risk of causing cardiac rythm disturbances"
-														}
-													]
-												},
-												"degreeOfChange": "decrease"
-											},
-											"probability": "always",
-											"evidence": "high-level"
-										}
-									},
-									{
-										"resource": {
-											"resourceType": "ForecastEffect",
-											"id": "SitModAls2SitMildAlsMp",
-											"typeOfEffect": "main-effect",
-											"typeOfEvent": "therapeutic-effect",
-											"subject": {
-												"reference": "Patient/pat1"
-											},
-											"appliesTo": {
-												"careActionInstance": [
-													{
-														"reference": "MedicationRequest/RecCOPD-LabaDecSitModAlsShould"
-													},
-													{
-														"reference": "MedicationRequest/RecCOPD-LamaDecSitModAlsShould"
-													},
-													{
-														"reference": "MedicationRequest/RecCOPD-LabaLamaDecSitModAlsShould"
-													}
-												],
-												"conditionAddressed": {
-													"reference": "Condition/SitModAls"
-												}
-											},
-											"expectedOutcomeCode": {
-												"coding": [
-													{
-														"system": "http://anonymous.org/data/SitMildAls",
-														"code": "SitMildAls",
-														"display": "having a mild airflow limitation severity"
-													}
-												]
-											},
-											"targetMeasurement": {
-												"measuredProperty": {
-													"coding": [
-														{
-															"system": "http://anonymous.org/data/PropAls",
-															"code": "PropAls",
-															"display": "airflow limitation severity"
-														}
-													]
-												},
-												"degreeOfChange": "decrease"
-											},
-											"probability": "always",
-											"evidence": "high-level"
-										}
-									},
-									{
-										"resource": {
-											"resourceType": "ForecastEffect",
-											"id": "SitPrQol2SitNrmQolMp",
-											"typeOfEffect": "main-effect",
-											"typeOfEvent": "therapeutic-effect",
-											"subject": {
-												"reference": "Patient/pat1"
-											},
-											"appliesTo": {
-												"careActionInstance": [
-													{
-														"reference": "ServiceRequest/RecCOPD-SmokeThrpyIncSitPrQolShould"
-													}
-												],
-												"conditionAddressed": {
-													"reference": "Condition/SitPrQol"
-												}
-											},
-											"expectedOutcomeCode": {
-												"coding": [
-													{
-														"system": "http://anonymous.org/data/SitNrmQol",
-														"code": "SitNrmQol",
-														"display": "having a standard quality of life"
-													}
-												]
-											},
-											"targetMeasurement": {
-												"measuredProperty": {
-													"coding": [
-														{
-															"system": "http://anonymous.org/data/PropQol",
-															"code": "PropQol",
-															"display": "quality of life"
-														}
-													]
-												},
-												"degreeOfChange": "increase"
-											},
-											"probability": "always",
-											"evidence": "high-level"
+										},
+										"subject": {
+											"reference": "Patient/1677163"
+										},
+										"extension": { //given FHIR extension. I use it to provide the problem being assessed (without the severity). Sometimes Condition.code === Condition.extension.valueCodeableConcept
+											"url" :"http://hl7.org/fhir/StructureDefinition/condition-dueTo",
+											"valueCodeableConcept":  [ 
+												{
+												"system": "http://snomed.info/sct",
+												"code": "698247007",
+												"display": "Cardiac arrhythmia (disorder)"
+											  }
+											],
+											"text": "(risk of) cardiac rythm disturbances" //as shown in TMRCodingSystem.xlsx, sheet 'TMR data', column 'Display(English)'
 										}
 									},
 									{
@@ -290,29 +197,168 @@
 											"doNotPerform": false,
 											"reasonReference": [
 												{
-													"reference": "Condition/SitModAls"
-												}
-											],
-											"forecast-effects":[
-												{
-													"reference": "ForecastEffect/SitModAls2SitMildAlsMp"
+													"reference": "Condition/SitModAls",
+													"extension" :{
+														"url": "road2h/StructureDefinition/forecast-effect",
+														"extension" : [
+															{
+																"url" : "typeOfEffect", 
+																"valueCode" : "main-effect" //labelled as rationale on screen
+															},
+															{
+																"url": "typeOfEvent", //labelled as contribution on screen 
+																"valueCode" : "therapeutic-effect"
+															},
+															{
+																"url" : "probability", //same label or probably strength of recommendation
+																"valueCode" : "always"
+															},
+															{
+																"url": "levelOfEvidence", //label is evidence level
+																"valueCode": "high"
+															},
+															{
+																"url": "directionOfChange", //part of value of 'rationale' field
+																"valueCode" : "decrease"
+															}
+														]
+													}
 												}
 											],
 											"medicationReference": {
 												"reference": "Medication/DrugTLaba"
 											},
 											"subject": {
-												"reference": "Patient/Pat1"
+												"reference": "Patient/1677163"
 											},
 											"detectedIssue": [
 												{
-													"reference": "DetectedIssue/alternative1"
+													"reference": "DetectedIssue/alternative1",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												},
 												{
-													"reference": "DetectedIssue/repetition2"
+													"reference": "DetectedIssue/repetition2",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												},
 												{
-													"reference": "DetectedIssue/contradiction3"
+													"reference": "DetectedIssue/contradiction3",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												}
 											]
 										}
@@ -327,12 +373,32 @@
 											"doNotPerform": false,
 											"reasonReference": [
 												{
-													"reference": "Condition/SitModAls"
-												}
-											],
-											"forecast-effects":[ 
-												{
-													"reference": "ForecastEffect/SitModAls2SitMildAlsMp"
+													"reference": "Condition/SitModAls",
+													"extension" :{
+														"url": "road2h/StructureDefinition/forecast-effect",
+														"extension" : [
+															{
+																"url" : "typeOfEffect", 
+																"valueCode" : "main-effect" //labelled as rationale on screen
+															},
+															{
+																"url": "typeOfEvent", //labelled as contribution on screen 
+																"valueCode" : "therapeutic-effect"
+															},
+															{
+																"url" : "probability", //same label or probably strength of recommendation
+																"valueCode" : "always"
+															},
+															{
+																"url": "levelOfEvidence", //label is evidence level
+																"valueCode": "high"
+															},
+															{
+																"url": "directionOfChange", //part of value of 'rationale' field
+																"valueCode" : "decrease"
+															}
+														]
+													}
 												}
 											],
 											"medicationReference": {
@@ -343,44 +409,98 @@
 											},
 											"detectedIssue": [
 												{
-													"reference": "DetectedIssue/alternative1"
+													"reference": "DetectedIssue/alternative1",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												},
 												{
-													"reference": "DetectedIssue/repetition2"
-												}
-											]
-										}
-									},
-									{
-										"resource": {
-											"resourceType": "MedicationRequest",
-											"id": "RecCOPD-BetaAgonistIncSitLwRskCrdShouldnot",
-											"status": "active",
-											"intent": "plan",
-											"instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf#page=4",
-											"doNotPerform": true,
-											"reasonReference": [
-												{
-													"reference": "Condition/SitLwRskCrd"
-												}
-											],
-											"forecast-effects":[
-												{
-													"reference": "ForecastEffect/SitLwRskCrd2SitHghRskCrdMn"
-												}
-											],
-											"medicationReference": {
-												"reference": "Medication/DrugCatBetaAgonist"
-											},
-											"subject": {
-												"reference": "Patient/Pat1"
-											},
-											"detectedIssue": [
-												{
-													"reference": "DetectedIssue/contradiction3"
-												},
-												{
-													"reference": "DetectedIssue/contradiction4"
+													"reference": "DetectedIssue/repetition2",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												}
 											]
 										}
@@ -395,29 +515,297 @@
 											"doNotPerform": false,
 											"reasonReference": [
 												{
-													"reference": "Condition/SitModAls"
-												}
-											],
-											"forecast-effects":[
-												{
-													"reference": "ForecastEffect/SitModAls2SitMildAlsMp"
+													"reference": "Condition/SitModAls",
+													"extension" :{
+														"url": "road2h/StructureDefinition/forecast-effect",
+														"extension" : [
+															{
+																"url" : "typeOfEffect", 
+																"valueCode" : "main-effect" //labelled as rationale on screen
+															},
+															{
+																"url": "typeOfEvent", //labelled as contribution on screen 
+																"valueCode" : "therapeutic-effect"
+															},
+															{
+																"url" : "probability", //same label or probably strength of recommendation
+																"valueCode" : "always"
+															},
+															{
+																"url": "levelOfEvidence", //label is evidence level
+																"valueCode": "high"
+															},
+															{
+																"url": "directionOfChange", //part of value of 'rationale' field
+																"valueCode" : "decrease"
+															}
+														]
+													}
 												}
 											],
 											"medicationReference": {
 												"reference": "Medication/DrugCatLabaLama"
 											},
 											"subject": {
-												"reference": "Patient/Pat1"
+												"reference": "Patient/1677163"
 											},
 											"detectedIssue": [
 												{
-													"reference": "DetectedIssue/alternative1"
+													"reference": "DetectedIssue/alternative1",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												},
 												{
-													"reference": "DetectedIssue/repetition2"
+													"reference": "DetectedIssue/repetition2",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												},
 												{
-													"reference": "DetectedIssue/contradiction4"
+													"reference": "DetectedIssue/contradiction4",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
+												}
+											]
+										}
+									},
+									{
+										"resource": {
+											"resourceType": "MedicationRequest",
+											"id": "RecCOPD-BetaAgonistIncSitLwRskCrdShouldnot",
+											"status": "active",
+											"intent": "plan",
+											"instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf#page=4",
+											"doNotPerform": true,
+											"reasonReference": [
+												{
+													"reference": "Condition/SitLwRskCrd",
+													"extension" :{
+														"url": "road2h/StructureDefinition/forecast-effect",
+														"extension" : [
+															{
+																"url" : "typeOfEffect", 
+																"valueCode" : "main-effect" //labelled as rationale on screen
+															},
+															{
+																"url": "typeOfEvent", //labelled as contribution on screen 
+																"valueCode" : "adverse-effect"
+															},
+															{
+																"url" : "probability", //same label or probably strength of recommendation
+																"valueCode" : "always"
+															},
+															{
+																"url": "levelOfEvidence", //label is evidence level
+																"valueCode": "high"
+															},
+															{
+																"url": "directionOfChange", //part of value of 'rationale' field
+																"valueCode" : "increase"
+															}
+														]
+													}
+												}
+											],
+											"medicationReference": {
+												"reference": "Medication/DrugCatBetaAgonist"
+											},
+											"subject": {
+												"reference": "Patient/1677163"
+											},
+											"detectedIssue": [
+												{
+													"reference": "DetectedIssue/contradiction3",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
+												},
+												{
+													"reference": "DetectedIssue/contradiction4",
+													"extension": {
+														"url" : "road2h/StructureDefinition/RecommendationsPreference", //preference as selected by clinician
+														"extension":[
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															},
+															{
+																"url" : "MedicationRequestPreference",
+																"extension" : [
+																	{
+																		"url": "MedicationRequestReference",
+																		"valueReference": "MedicationRequest/"//TODO:
+																	},
+																	{
+																		"url": "preferenceOverCurrentRequest",
+																		"valueCode": "higher-preference"//TODO: check for use case. codes are: "higher-preference" | "same-preference" | "lower-preference" (than the current MedicationRequest)
+																	}
+																]
+															}
+														]
+													}
 												}
 											]
 										}
@@ -426,32 +814,100 @@
 										"resource": {
 											"resourceType": "ServiceRequest",
 											"id": "RecCOPD-SmokeThrpyIncSitPrQolShould",
+											"instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf#page=4",
 											"status": "active",
 											"intent": "plan",
-											"instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf#page=4",
 											"doNotPerform": false,
-											"reasonReference": [
-												{
-													"reference": "Condition/SitPrQol"
-												}
-											],
-											"forecast-effects":[
-												{
-													"reference": "ForecastEffect/SitPrQol2SitNrmQolMp"
-												}
-											],
 											"code": {
 												"coding": [
 													{
-														"system": "http://anonymous.org/data/NonDrugTSmokeThrpy",
-														"code": "SmokeThrpy",
-														"display": "administer smoking cessation therapy"
+														"system": "http://snomed.info/sct",
+														"code": "710081004",
+														"display": "Smoking cessation therapy (regime/therapy)"
 													}
-												]
+												],
+												"text" : "(administer) smoking cessation therapy" // referral to/for?
 											},
 											"subject": {
-												"reference": "Patient/Pat1"
-											}
+												"reference": "Patient/1677163"
+											},
+											"reasonReference": [
+												{
+													"reference": "Condition/SitPrQol",
+													"extension" :{
+														"url": "road2h/StructureDefinition/forecast-effect",
+														"extension" : [
+															{
+																"url" : "typeOfEffect", 
+																"valueCode" : "main-effect" //labelled as rationale on screen
+															},
+															{
+																"url": "typeOfEvent", //labelled as contribution on screen 
+																"valueCode" : "therapeutic-effect"
+															},
+															{
+																"url" : "probability", //same label or probably strength of recommendation
+																"valueCode" : "always"
+															},
+															{
+																"url": "levelOfEvidence", //label is evidence level
+																"valueCode": "high"
+															},
+															{
+																"url": "directionOfChange", //part of value of 'rationale' field
+																"valueCode" : "increase"
+															}
+														]
+													}
+												}
+											]
+										}
+									},
+									{
+										"resource": {
+											"resourceType": " ImmunizationRecommendation",
+											"id": "RecCOPD-", //TODO: add ID
+											"patient": {
+												"reference": "Patient/1677163"
+											},
+											"date" : "2015-02-09T11:04:15.817-05:00", //TODO: dynamic
+											"recommendation" : [
+												{
+													"vaccineCode": [
+														{
+															"coding": [
+															  {
+																"system": "http://snomed.info/sct",
+																"code": "1181000221105",
+																"display": "Vaccine product containing only Influenza virus antigen (medicinal product)"
+															  }
+															],
+															"text": "annual flu vaccine"
+														}
+													],
+													"targetDisease" : { 
+														"coding": [
+															{
+															  "system": "http://snomed.info/sct",
+															  "code": "6142004",
+															  "display": "Influenza (disorder)"
+															}
+														  ],
+														  "text": "flu"
+													},
+													"forecastStatus" : {	
+															"coding": [
+															  {
+																"system": "http://terminology.hl7.org/CodeSystem/immunization-recommendation-status",
+																"code": "due",
+																"display": "Due"
+															  }
+															],
+															"text" : "due"
+													},
+													"description": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf#page=4"
+												}
+											]
 										}
 									},
 									{

@@ -1,6 +1,6 @@
 {
   "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
-  "fhirServer": "https://example.org/fhir",
+  "fhirServer": "https://example.org/fhir",//remove
   "hook": "copd-assess",
   "context": {
     "encounterId": "987654",
@@ -30,7 +30,7 @@
               {
                 "system": "http://snomed.info/sct",
                 "code": "13645005",
-                "display": "Chronic obstructive lung disease (disorder)"
+                "display": "Chronic obstructive pulmonary disease (disorder)"
               }
             ],
             "text": "COPD"
@@ -45,7 +45,6 @@
             ],
             "text": "Copd group B"
           },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
           "referenceRange": [
             //this range is artificial as it is not a range but it describes the 4 values
             {
@@ -185,7 +184,6 @@
             "system": "http://unitsofmeasure.org",
             "code": "{score}"
           },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
           "referenceRange": [
             {
               "low": {
@@ -243,9 +241,7 @@
               }
             ],
             "text": "Number of copd exacerbations"
-          },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
-          "referenceRange": [] //there is no range. Remove?
+          }
         }
       ]
     },
