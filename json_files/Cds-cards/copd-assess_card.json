@@ -19,17 +19,15 @@
                 "id": "copdAssessParameters",
                 "parameter": [
                   {
-                    //could be removed
                     "name": "patientId",
                     "valueId": "1677163"
                   },
                   {
-                    //could be removed
                     "name": "encounterId",
-                    "valueId": "1677163"
+                    "valueId": "16778163"
                   },
                   {
-                    "name": "medicationBundle",
+                    "name": "medicationBundle", //all medication resources that will be referenced in COPD group lists
                     "resource": {
                       "resourceType": "Bundle",
                       "id": "medicationBundle",
@@ -42,9 +40,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugCatSabaSama", //optional. Not a system currently. Removed?
                                   "code": "SabaSama",
-                                  "display": "administer a combination of SABA and SAMA"
+                                  "display": "medication containing a combination of SABA and SAMA"
                                 }
                               ]
                             }
@@ -57,9 +54,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTSaba",
                                   "code": "Saba",
-                                  "display": "administer SABA"
+                                  "display": "medication containing SABA"
                                 }
                               ]
                             }
@@ -72,9 +68,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTSama",
                                   "code": "Sama",
-                                  "display": "administer SAMA"
+                                  "display": "medication containing SAMA"
                                 }
                               ]
                             }
@@ -87,9 +82,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugCatLabaLama",
                                   "code": "LabaLama",
-                                  "display": "administer a combination of LABA and LAMA"
+                                  "display": "medication containing a combination of LABA and LAMA"
                                 }
                               ]
                             }
@@ -102,9 +96,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTLaba",
                                   "code": "Laba",
-                                  "display": "administer LABA"
+                                  "display": "medication containing LABA"
                                 }
                               ]
                             }
@@ -117,9 +110,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTLama",
                                   "code": "Lama",
-                                  "display": "administer LAMA"
+                                  "display": "medication containing LAMA"
                                 }
                               ]
                             }
@@ -132,9 +124,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTLabaIcs",
                                   "code": "LabaIcs",
-                                  "display": "administer a combination of LABA and ICS"
+                                  "display": "medication containing a combination of LABA and ICS"
                                 }
                               ]
                             }
@@ -147,9 +138,8 @@
                             "code": {
                               "coding": [
                                 {
-                                  "system": "http://anonymous.org/data/DrugTLabaLamaIcs",
                                   "code": "LabaLamaIcs",
-                                  "display": "administer a combination of LABA, LAMA and ICS"
+                                  "display": "medication containing a combination of LABA, LAMA and ICS"
                                 }
                               ]
                             }
@@ -161,15 +151,17 @@
                   {
                     "name": "copdGroupA",
                     "part": [
-                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      //dynamically created by DSS but ALWAYS part[0] is the code to be matched against, and part[1] is list of TOP preferences and part[size - 1] is list of LEAST prefs within group
                       {
                         "name": "code",
                         "valueCoding": {
-                          "system": "http://snomed.info/sct", //check
-                          "code": "313296004"
+                          "system": "http://snomed.info/sct",
+                          "code": "1097871000000101",
+                          "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A "
                         }
                       },
                       {
+                        //Now the medication resources are given  by the DSS already ordered (LIST resource) using the COPD guidelines
                         "name": "medicationPreference1",
                         "resource": {
                           "resourceType": "List",
@@ -242,8 +234,9 @@
                       {
                         "name": "code",
                         "valueCoding": {
-                          "system": "http://snomed.info/sct", //check
-                          "code": "313297008"
+                          "system": "http://snomed.info/sct",
+                          "code": "1097881000000104",
+                          "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                         }
                       },
                       {
@@ -292,8 +285,9 @@
                       {
                         "name": "code",
                         "valueCoding": {
-                          "system": "http://snomed.info/sct", //check
-                          "code": "313299006"
+                          "system": "http://snomed.info/sct",
+                          "code": "1097891000000102",
+                          "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
                         }
                       },
                       {
@@ -354,12 +348,13 @@
                   {
                     "name": "copdGroupD",
                     "part": [
-                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                      //dynamically created but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
                       {
                         "name": "code",
                         "valueCoding": {
-                          "system": "http://snomed.info/sct", //check
-                          "code": "135836000"
+                          "system": "http://snomed.info/sct",
+                          "code": "1097901000000101",
+                          "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D"
                         }
                       },
                       {
@@ -434,10 +429,11 @@
                     ]
                   },
                   {
-                    "name": "assessedCopdStage",
+                    "name": "assessedCopdStage", //This is the COPD group suggested by the DSS after processing the patient's data from the hook
                     "valueCoding": {
-                      "system": "http://snomed.info/sct", //check
-                      "code": "313296004"
+                      "system": "http://snomed.info/sct",
+                      "code": "1097881000000104", //find the matching code in one of 'copdGroup[A|B|C|D].part[0].valueCoding.code' values.
+                      "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                     }
                   }
                 ]

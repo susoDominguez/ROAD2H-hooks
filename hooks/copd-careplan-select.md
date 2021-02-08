@@ -30,11 +30,11 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
 
 ```json
 {
-  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
-  "fhirServer": "https://example.org/fhir",
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", 
   "hook": "copd-careplan-select",
   "context": {
-    "encounterId": "1234", 
+    "encounterId": "285064-0", 
+    "patientId": "1677163",
     "birthDate": "1970-10-03T00:00:00+01:00", 
     "smokingStatus": {
       "resourceType": "Observation",
@@ -43,42 +43,34 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
       "code": {
         "coding": [
           {
-            "system": "https://www.snomed.org/",
+            "system": "http://snomed.info/sct",
             "code": "229819007",
             "display": "Tobacco use and exposure (observable entity)"
           }
-        ],
-        "text": "Smoking status" 
+        ]
       },
       "valueCodeableConcept": {
         "coding": [
           {
             "system": "http://snomed.info/sct",
             "code": "8392000",
-            "display": "Non-smoker (finding)"
+            "display": "Non-smoker"
           }
-        ],
-        "text": "Non-smoker"
+        ]
       },
       "referenceRange": [
         {
           "low": {
             "system": "http://snomed.info/sct",
             "code": "8392000",
-            "display": "Non-smoker (finding)"
-          },
-          "type": {
-            "text": "Non-smoker"
+            "display": "Non-smoker"
           }
         },
         {
           "high": {
             "system": "http://snomed.info/sct",
             "code": "77176002",
-            "display": "Smoker (finding)"
-          },
-          "type": {
-            "text": "Smoker"
+            "display": "Smoker"
           }
         }
       ]
@@ -97,15 +89,13 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "49601007",
-                  "display": "Disorder of cardiovascular system (disorder)"
+                  "display": "Disorder of cardiovascular system"
                 }
-              ],
-              "text": "Cvd"
+              ]
             },
             "subject": {
               "reference": "Patient/1677163"
-            },
-            "recordedDate": "2020-10-26T18:00:00+01:00"
+            }
           }
         },
         {
@@ -117,15 +107,13 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "709044004",
-                  "display": "Chronic kidney disease (disorder)"
+                  "display": "Chronic kidney disease"
                 }
-              ],
-              "text": "Ckd"
+              ]
             },
             "subject": {
               "reference": "Patient/1677163"
-            },
-            "recordedDate": "2020-10-26T18:00:00+01:00"
+            }
           }
         }
       ]
@@ -145,12 +133,11 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "1181000221105",
-                  "display": "Vaccine product containing only Influenza virus antigen (medicinal product)"
+                  "display": "Vaccine product containing only Influenza virus antigen"
                 }
-              ],
-              "text": "FLU vaccine"
+              ]
             },
-            "occurrenceDateTime": "2020-10-26T18:00:00+01:00"
+            "occurrenceDateTime": "2020-10-26T18:00:00+01:00" 
           }
         },
         {
@@ -163,10 +150,9 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
                 {
                   "system": "http://snomed.info/sct",
                   "code": "333598008",
-                  "display": "Pneumococcal vaccine (product)"
+                  "display": "Pneumococcal vaccine"
                 }
-              ],
-              "text": "Pneumococcal vaccine"
+              ]
             }
           }
         }
@@ -175,7 +161,7 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
     "copdAssessment": {
       "resourceType": "Bundle",
       "id": "copdAssessmentBundle",
-			"type": "collection",
+      "type": "collection",
       "entry": [
         {
           "resource": {
@@ -186,123 +172,112 @@ The preferences field references FHIR resources from the CarePlan in the copdAss
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
-                  "code": "13645005",
-                  "display": "Chronic obstructive lung disease (disorder)"
+                  "code": "1097861000000108",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group"
                 }
               ],
-              "text": "COPD"
+              "text": "COPD group"
             },
             "valueCodeableConcept": {
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
-                  "code": "313296004",
-                  "display": "Mild chronic obstructive pulmonary disease (disorder)"
+                  "code": "1097871000000101",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
                 }
-              ],
-              "text": "Copd group A"
+              ]
             },
-            "effectiveDateTime": "2018-03-11T16:07:54+00:00",
             "referenceRange": [
               {
                 "low": {
                   "system": "http://snomed.info/sct",
-                  "code": "313296004",
-                  "display": "Mild chronic obstructive pulmonary disease (disorder)"
-                },
-                "type": {
-                  "text": "Copd group A"
+                  "code": "1097871000000101",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
                 }
               },
               {
                 "low": {
                   "system": "http://snomed.info/sct",
-                  "code": "313297008",
-                  "display": "Moderate chronic obstructive pulmonary disease (disorder)"
-                },
-                "type": {
-                  "text": "Copd group B"
+                  "code": "1097881000000104",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                 }
               },
               {
                 "high": {
                   "system": "http://snomed.info/sct",
-                  "code": "313299006",
-                  "display": "Severe chronic obstructive pulmonary disease (disorder)"
-                },
-                "type": {
-                  "text": "Copd group C"
+                  "code": "1097891000000102",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
                 }
               },
               {
                 "high": {
                   "system": "http://snomed.info/sct",
-                  "code": "135836000",
-                  "display": "End stage chronic obstructive pulmonary disease (disorder)"
-                },
-                "type": {
-                  "text": "Copd group D"
+                  "code": "1097901000000101",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D"
                 }
               }
             ]
           }
         },
         {
-          "resourceType": "CarePlan",
-          "id": "selected_treatments",
-          "status": "active",
-          "intent": "proposal",
-          "subject": {
-            "reference": "Patient/1677163",
-            "display": "Link to patient"
-          },
-          "contained": [
-            {
-              "resourceType": "Medication",
-              "id": "DrugTLaba",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugTLaba",
-                    "code": "Laba",
-                    "display": "administer LABA"
+          "resource": {
+            "resourceType": "Bundle",
+            "id": "selected_treatments",
+            "type": "collection",
+            "entry": [
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugTLaba",
+                  "code": {
+                    "coding": [
+                      {
+                        "code": "Laba",
+                        "display": "administer medication containing LABA"
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "resourceType": "Medication",
-              "id": "DrugTLama",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugTLama",
-                    "code": "Lama",
-                    "display": "administer LAMA"
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugTLama",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://anonymous.org/data/DrugTLama",
+                        "code": "Lama",
+                        "display": "administer medication containing a  of LAMA"
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "resourceType": "Medication",
-              "id": "DrugCatLabaLama",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugCatLabaLama",
-                    "code": "LabaLama",
-                    "display": "administer a combination of LABA and LAMA"
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaLama",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://anonymous.org/data/DrugCatLabaLama",
+                        "code": "LabaLama",
+                        "display": "administer medication containing a combination of LABA and LAMA"
+                      }
+                    ]
                   }
-                ]
+                }
               }
-            }
-          ]
+            ]
+          }
         }
       ]
     },
-    "preferences": ["Medication/DrugTLaba"] 
-  }
-}
+    "selectedMedications": ["Medication/DrugTLaba"]
+  } 
+} 
+
 
 
 ```

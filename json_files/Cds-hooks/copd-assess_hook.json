@@ -1,19 +1,19 @@
 {
-  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
-  "fhirServer": "https://example.org/fhir",//remove
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", //unique id for each request. Could be left fixed as we are not working with live patietns
+  "fhirServer": "https://example.org/fhir", //Heliant's fhir server. OPTIONAL
   "hook": "copd-assess",
   "context": {
     "encounterId": "987654",
     "patientId": "1677163", //just added. Simply bc it is stated in Condition resources anyway.
     "medication": {
       "resourceType": "Medication",
-      "id": "DrugTLaba",
+      "id": "current_medication",
       "code": {
         "coding": [
           {
-            "system": "http://anonymous.org/data/DrugTLaba", //not a system currently. Removed for TMR drugs?
+            "system": "http://anonymous.org/data/DrugTLaba",
             "code": "Laba",
-            "display": "administer LABA"
+            "display": "administer medication containing LABA"
           }
         ]
       }
@@ -22,225 +22,204 @@
       "resourceType": "Bundle",
       "entry": [
         {
-          "resourceType": "Observation",
-          "id": "copd_group_prev",
-          "status": "final",
-          "code": {
-            "coding": [
+          "resource": {
+            "resourceType": "Observation", //back to Observation
+            "id": "copd_group_prev",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097861000000108",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group"
+                }
+              ]
+            },
+            "valueCodeableConcept": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097881000000104",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
+                }
+              ]
+            },
+            "referenceRange": [
+              //range of values for COPD Group
               {
-                "system": "http://snomed.info/sct",
-                "code": "13645005",
-                "display": "Chronic obstructive pulmonary disease (disorder)"
-              }
-            ],
-            "text": "COPD"
-          },
-          "valueCodeableConcept": {
-            "coding": [
+                "low": {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097871000000101",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
+                }
+              },
               {
-                "system": "http://snomed.info/sct",
-                "code": "313297008",
-                "display": "Moderate chronic obstructive pulmonary disease (disorder)"
-              }
-            ],
-            "text": "Copd group B"
-          },
-          "referenceRange": [
-            //this range is artificial as it is not a range but it describes the 4 values
-            {
-              "low": {
-                "system": "http://snomed.info/sct",
-                "code": "313296004",
-                "display": "Mild chronic obstructive pulmonary disease (disorder)"
+                "low": {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097881000000104",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
+                }
               },
-              "type": {
-                "text": "Copd group A"
-              }
-            },
-            {
-              "low": {
-                "system": "http://snomed.info/sct",
-                "code": "313297008",
-                "display": "Moderate chronic obstructive pulmonary disease (disorder)"
+              {
+                "high": {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097891000000102",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
+                }
               },
-              "type": {
-                "text": "Copd group B"
+              {
+                "high": {
+                  "system": "http://snomed.info/sct",
+                  "code": "1097901000000101",
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D"
+                }
               }
-            },
-            {
-              "high": {
-                "system": "http://snomed.info/sct",
-                "code": "313299006",
-                "display": "Severe chronic obstructive pulmonary disease (disorder)"
-              },
-              "type": {
-                "text": "Copd group C"
-              }
-            },
-            {
-              "high": {
-                "system": "http://snomed.info/sct",
-                "code": "135836000",
-                "display": "End stage chronic obstructive pulmonary disease (disorder)"
-              },
-              "type": {
-                "text": "Copd group D"
-              }
-            }
-          ]
+            ]
+          }
         },
         {
-          "resourceType": "Observation",
-          "id": "cat_score_prev",
-          "status": "final",
-          "code": {
-            "coding": [
+          "resource": {
+            "resourceType": "Observation",
+            "id": "cat_score_prev",
+            "status": "final",
+            "code": {
+              //this code doesnt change
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "446660005",
+                  "display": "Chronic obstructive pulmonary disease assessment test score"
+                }
+              ]
+            },
+            "valueInteger": 10,
+            "referenceRange": [
               {
-                "system": "http://snomed.info/sct",
-                "code": "446660005",
-                "display": "Chronic obstructive pulmonary disease assessment test score (observable entity)"
+                "low": {
+                  "value": 0,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 9,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                }
+              },
+              {
+                "low": {
+                  "value": 10,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 20,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                }
+              },
+              {
+                "low": {
+                  "value": 21,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 30,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                }
+              },
+              {
+                "low": {
+                  "value": 31,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 40,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                }
               }
-            ],
-            "text": "CAT score"
-          },
-          "valueQuantity": {
-            "value": 10,
-            "system": "http://unitsofmeasure.org",
-            "code": "{score}"
-          },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
-          "referenceRange": [
-            //to be confirmed by Emma and Ella
-            {
-              "low": {
-                "value": 0,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 9,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Low impact level"
-            },
-            {
-              "low": {
-                "value": 10,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 20,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Medium impact level"
-            },
-            {
-              "low": {
-                "value": 21,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 30,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "High impact level"
-            },
-            {
-              "low": {
-                "value": 31,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 40,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Very high impact level"
-            }
-          ]
+            ]
+          }
         },
         {
-          "resourceType": "Observation",
-          "id": "mmrc_prev",
-          "status": "final",
-          "code": {
-            "coding": [
+          "resource": {
+            "resourceType": "Observation",
+            "id": "mmrc_prev",
+            "status": "final",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "450755002",
+                  "display": "Medical Research Council Dyspnoea scale score"
+                }
+              ]
+            },
+            "valueInteger": 2,
+            "referenceRange": [
               {
-                "system": "http://snomed.info/sct",
-                "code": "450755002",
-                "display": "Medical Research Council Dyspnoea scale score (observable entity)"
+                "low": {
+                  "value": 0,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "no breathlessness"
+              },
+              {
+                "low": {
+                  "value": 1,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "breathless when hurrying or walking up a hill"
+              },
+              {
+                "high": {
+                  "value": 2,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "breathless when walking slower than people of same age or has to stop when walking"
+              },
+              {
+                "high": {
+                  "value": 3,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Stops for breath after walking 100 yards, or after a few minutes on level ground"
+              },
+              {
+                "high": {
+                  "value": 4,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Too breathless to leave the house, or breathless when dressing"
               }
-            ],
-            "text": "mMRC"
-          },
-          "valueQuantity": {
-            "value": 2,
-            "system": "http://unitsofmeasure.org",
-            "code": "{score}"
-          },
-          "referenceRange": [
-            {
-              "low": {
-                "value": 0,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "no breathlessness"
-            },
-            {
-              "low": {
-                "value": 1,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "breathless when hurrying or walking up a hill"
-            },
-            {
-              "high": {
-                "value": 2,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "breathless when walking slower than people of same age or has to stop when walking"
-            },
-            {
-              "high": {
-                "value": 3,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Stops for breath after walking 100 yards, or after a few minutes on level ground"
-            },
-            {
-              "high": {
-                "value": 4,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Too breathless to leave the house, or breathless when dressing"
-            }
-          ]
+            ]
+          }
         },
         {
-          "resourceType": "Observation",
-          "id": "copd_exacerbations_number_prev",
-          "status": "final",
-          "valueInteger": 0,
-          "code": {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "723245007",
-                "display": "Number of chronic obstructive pulmonary disease exacerbations in past year (observable entity)"
-              }
-            ],
-            "text": "Number of copd exacerbations"
+          "resource": {
+            "resourceType": "Observation",
+            "id": "copd_exacerbations_number_prev",
+            "status": "final",
+            "valueInteger": 0,
+            "code": {
+              //this code never changes
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "723245007",
+                  "display": "Number of chronic obstructive pulmonary disease exacerbations in past year"
+                }
+              ]
+            }
           }
         }
       ]
@@ -249,166 +228,170 @@
       "resourceType": "Bundle",
       "entry": [
         {
-          "resourceType": "Observation",
-          "id": "cat_score_curr",
-          "status": "preliminary",
-          "code": {
-            "coding": [
+          "resource": {
+            "resourceType": "Observation",
+            "id": "cat_score_curr",
+            "status": "preliminary",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "446660005",
+                  "display": "Chronic obstructive pulmonary disease assessment test score"
+                }
+              ]
+            },
+            "valueInteger": 8,
+            "referenceRange": [
               {
-                "system": "http://snomed.info/sct",
-                "code": "446660005",
-                "display": "Chronic obstructive pulmonary disease assessment test score (observable entity)"
+                "low": {
+                  "value": 0,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 9,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Low impact level"
+              },
+              {
+                "low": {
+                  "value": 10,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 20,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Medium impact level"
+              },
+              {
+                "low": {
+                  "value": 21,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 30,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "High impact level"
+              },
+              {
+                "low": {
+                  "value": 31,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "high": {
+                  "value": 40,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Very high impact level"
               }
-            ],
-            "text": "CAT score"
-          },
-          "valueQuantity": {
-            "value": 8,
-            "system": "http://unitsofmeasure.org",
-            "code": "{score}"
-          },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
-          "referenceRange": [
-            //to be confirmed by Emma and Ella
-            {
-              "low": {
-                "value": 0,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 9,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Low impact level"
-            },
-            {
-              "low": {
-                "value": 10,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 20,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Medium impact level"
-            },
-            {
-              "low": {
-                "value": 21,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 30,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "High impact level"
-            },
-            {
-              "low": {
-                "value": 31,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "high": {
-                "value": 40,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Very high impact level"
-            }
-          ]
+            ]
+          }
         },
         {
-          "resourceType": "Observation",
-          "id": "mmrc_curr",
-          "status": "preliminary",
-          "valueQuantity": {
-            "value": 1,
-            "system": "http://unitsofmeasure.org",
-            "code": "{score}"
-          },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
-          "code": {
-            "coding": [
+          "resource": {
+            "resourceType": "Observation",
+            "id": "mmrc_curr",
+            "status": "preliminary",
+            "valueInteger": 1,
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "450755002",
+                  "display": "Medical Research Council Dyspnoea scale score"
+                }
+              ]
+            },
+            "referenceRange": [
               {
-                "system": "http://snomed.info/sct",
-                "code": "450755002",
-                "display": "Medical Research Council Dyspnoea scale score (observable entity)"
+                "low": {
+                  "value": 0,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "no breathlessness"
+              },
+              {
+                "low": {
+                  "value": 1,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "breathless when hurrying or walking up a hill"
+              },
+              {
+                "high": {
+                  "value": 2,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "breathless when walking slower than people of same age or has to stop when walking"
+              },
+              {
+                "high": {
+                  "value": 3,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Stops for breath after walking 100 yards, or after a few minutes on level ground"
+              },
+              {
+                "high": {
+                  "value": 4,
+                  "system": "http://unitsofmeasure.org",
+                  "code": "{score}"
+                },
+                "text": "Too breathless to leave the house, or breathless when dressing"
               }
-            ],
-            "text": "mMRC"
-          },
-          "referenceRange": [
-            {
-              "low": {
-                "value": 0,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "no breathlessness"
-            },
-            {
-              "low": {
-                "value": 1,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "breathless when hurrying or walking up a hill"
-            },
-            {
-              "high": {
-                "value": 2,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "breathless when walking slower than people of same age or has to stop when walking"
-            },
-            {
-              "high": {
-                "value": 3,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Stops for breath after walking 100 yards, or after a few minutes on level ground"
-            },
-            {
-              "high": {
-                "value": 4,
-                "system": "http://unitsofmeasure.org",
-                "code": "{score}"
-              },
-              "text": "Too breathless to leave the house, or breathless when dressing"
-            }
-          ]
+            ]
+          }
         },
         {
-          "resourceType": "Observation",
-          "id": "copd_exacerbations_number_curr",
-          "status": "preliminary",
-          "valueInteger": 0,
-          "code": {
-            "coding": [
-              {
-                "system": "http://snomed.info/sct",
-                "code": "723245007",
-                "display": "Number of chronic obstructive pulmonary disease exacerbations in past year (observable entity)"
-              }
-            ],
-            "text": "Number of copd exacerbations"
-          },
-          "effectiveDateTime": "2018-03-11T16:07:54+00:00",
-          "referenceRange": [] //take off
+          "resource": {
+            "resourceType": "Observation",
+            "id": "copd_exacerbations_number_curr",
+            "status": "preliminary",
+            "valueInteger": 0,
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "723245007",
+                  "display": "Number of chronic obstructive pulmonary disease exacerbations in past year"
+                }
+              ]
+            }
+          }
         }
       ]
     },
     "asthma": {
-      //Condition resource. In this example the patient does not have asthma so as the parameter is optional, it should not be added to the hook json file
+      //if patient does not have asthma, do not add this resource
+      "resourceType": "Condition",
+      "id": "asthma",
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "195967001",
+            "display": "Asthma"
+          }
+        ]
+      },
+      "subject": {
+        "reference": "Patient/1677163"
+      }
     }
   }
 }

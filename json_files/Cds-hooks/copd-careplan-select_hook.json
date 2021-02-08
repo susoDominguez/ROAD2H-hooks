@@ -4,7 +4,7 @@
   "context": {
     "encounterId": "285064-0", //if system is not able to provide one for each encounter, just leave fixed
     "patientId": "1677163",
-    "birthDate": "1970-10-03T00:00:00+01:00", //what's Heliant's preferred format? 
+    "birthDate": "1970-10-03T00:00:00+01:00", //what's Heliant's preferred format?
     "smokingStatus": {
       "resourceType": "Observation",
       "id": "smoking_status",
@@ -12,43 +12,34 @@
       "code": {
         "coding": [
           {
-            "system": "https://www.snomed.org/",
+            "system": "http://snomed.info/sct",
             "code": "229819007",
             "display": "Tobacco use and exposure (observable entity)"
           }
-        ],
-        "text": "Smoking status" //text values are a customised rephrasing of the formal value (display above). In some cases could be same as display.
+        ]
       },
       "valueCodeableConcept": {
         "coding": [
           {
             "system": "http://snomed.info/sct",
             "code": "8392000",
-            "display": "Non-smoker (finding)"
+            "display": "Non-smoker"
           }
-        ],
-        "text": "Non-smoker"
+        ]
       },
       "referenceRange": [
-        //this range is artificial but it provides and preserves the 2 possible coded values that the clinician can choose from.
         {
           "low": {
             "system": "http://snomed.info/sct",
             "code": "8392000",
-            "display": "Non-smoker (finding)"
-          },
-          "type": {
-            "text": "Non-smoker"
+            "display": "Non-smoker"
           }
         },
         {
           "high": {
             "system": "http://snomed.info/sct",
             "code": "77176002",
-            "display": "Smoker (finding)"
-          },
-          "type": {
-            "text": "Smoker"
+            "display": "Smoker"
           }
         }
       ]
@@ -58,6 +49,7 @@
       "id": "comorbiditiesBundle",
       "type": "collection",
       "entry": [
+        //if a patient does not have a comorbidity, do not add the resource
         {
           "resource": {
             "resourceType": "Condition",
@@ -67,15 +59,13 @@
                 {
                   "system": "http://snomed.info/sct",
                   "code": "49601007",
-                  "display": "Disorder of cardiovascular system (disorder)"
+                  "display": "Disorder of cardiovascular system"
                 }
-              ],
-              "text": "Cvd"
+              ]
             },
             "subject": {
               "reference": "Patient/1677163"
-            },
-            "recordedDate": "2020-10-26T18:00:00+01:00"
+            }
           }
         },
         {
@@ -87,15 +77,13 @@
                 {
                   "system": "http://snomed.info/sct",
                   "code": "709044004",
-                  "display": "Chronic kidney disease (disorder)"
+                  "display": "Chronic kidney disease"
                 }
-              ],
-              "text": "Ckd"
+              ]
             },
             "subject": {
               "reference": "Patient/1677163"
-            },
-            "recordedDate": "2020-10-26T18:00:00+01:00"
+            }
           }
         }
       ]
@@ -112,14 +100,12 @@
             "status": "completed", //range of values: completed | not-done
             "vaccineCode": {
               "coding": [
-                //to be confirmed by Emma/Ella
                 {
                   "system": "http://snomed.info/sct",
                   "code": "1181000221105",
-                  "display": "Vaccine product containing only Influenza virus antigen (medicinal product)"
+                  "display": "Vaccine product containing only Influenza virus antigen"
                 }
-              ],
-              "text": "flu vaccine"
+              ]
             },
             "occurrenceDateTime": "2020-10-26T18:00:00+01:00" //if 'not-done', this field is discarded
           }
@@ -132,12 +118,11 @@
             "vaccineCode": {
               "coding": [
                 {
-                  "system": "http://snomed.info/sct", //to be confirmed
+                  "system": "http://snomed.info/sct",
                   "code": "333598008",
-                  "display": "Pneumococcal vaccine (product)"
+                  "display": "Pneumococcal vaccine"
                 }
-              ],
-              "text": "Pneumococcal vaccine"
+              ]
             }
           }
         }
@@ -146,7 +131,7 @@
     "copdAssessment": {
       "resourceType": "Bundle",
       "id": "copdAssessmentBundle",
-			"type": "collection",
+      "type": "collection",
       "entry": [
         {
           "resource": {
@@ -154,118 +139,113 @@
             "id": "copd_group_curr",
             "status": "preliminary",
             "code": {
-              "coding": [ //coded values in this resource to be confirmed by Emma/Ella
+              "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "1097861000000108",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group (observable entity)"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group"
                 }
               ],
-              "text": "Copd group"
+              "text": "COPD group"
             },
             "valueCodeableConcept": {
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
                   "code": "1097871000000101",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A (finding)"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
                 }
-              ],
-              "text": "Copd group A"
+              ]
             },
-            "effectiveDateTime": "2018-03-11T16:07:54+00:00",
             "referenceRange": [
+              //range of values for COPD Group
               {
                 "low": {
                   "system": "http://snomed.info/sct",
                   "code": "1097871000000101",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A (finding)"
-                },
-                "type": {
-                  "text": "Copd group A"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
                 }
               },
               {
                 "low": {
                   "system": "http://snomed.info/sct",
                   "code": "1097881000000104",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B (finding)"
-                },
-                "type": {
-                  "text": "Copd group B"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                 }
               },
               {
                 "high": {
                   "system": "http://snomed.info/sct",
                   "code": "1097891000000102",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C (finding)"
-                },
-                "type": {
-                  "text": "Copd group C"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
                 }
               },
               {
                 "high": {
                   "system": "http://snomed.info/sct",
                   "code": "1097901000000101",
-                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D (finding)"
-                },
-                "type": {
-                  "text": "Copd group D"
+                  "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D"
                 }
               }
             ]
           }
         },
         {
-          "resourceType": "Bundle", //to Jovana: Ive changed the type from CarePlan becuase Medications contained in this resource will not be part of the same care plan. In fact, they are meant to be included in a care plan with at most 1 of them.
-          "id": "selected_treatments", 
-          "type": "collection",
-          "entry": [ //by default it must have all the medications suggested by the DSS as a response to hook copd-assess, plus any other COPD medication the clinician selects.
-            {
-              "resourceType": "Medication",
-              "id": "DrugTLaba",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugTLaba",
-                    "code": "Laba",
-                    "display": "administer LABA"
+          "resource": {
+            "resourceType": "Bundle",
+            "id": "selected_treatments",
+            "type": "collection",
+            "entry": [
+              //by default it must have all the medications suggested by the DSS as a response to request hook copd-assess, plus any other COPD additional medication (possibly none) the clinician selects.
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugTLaba",
+                  "code": {
+                    "coding": [
+                      {
+                        "code": "Laba",
+                        "display": "administer medication containing LABA"
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "resourceType": "Medication",
-              "id": "DrugTLama",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugTLama",
-                    "code": "Lama",
-                    "display": "administer LAMA"
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugTLama",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://anonymous.org/data/DrugTLama",
+                        "code": "Lama",
+                        "display": "administer medication containing a  of LAMA"
+                      }
+                    ]
                   }
-                ]
-              }
-            },
-            {
-              "resourceType": "Medication",
-              "id": "DrugCatLabaLama",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://anonymous.org/data/DrugCatLabaLama",
-                    "code": "LabaLama",
-                    "display": "administer a combination of LABA and LAMA"
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaLama",
+                  "code": {
+                    "coding": [
+                      {
+                        "system": "http://anonymous.org/data/DrugCatLabaLama",
+                        "code": "LabaLama",
+                        "display": "administer medication containing a combination of LABA and LAMA"
+                      }
+                    ]
                   }
-                ]
+                }
               }
-            }
-          ]
+            ]
+          }
         }
       ]
     },
-    "selectedMedications": ["Medication/DrugTLaba"] //This list includes references to all copd drugs the clinician has selected to submit to the DSS. 
-  }                                                 //So, in this example, DSS provides a personalised care plan which includes LABA medication but also takes into account the other drugs not selected when giving info to the clinician
-}                                                    // If list empty (hence not added to hook instance), by default all Medications in Bundle/selected_treatments are taken as selected. Hence, we are looking at the suggestions made by the DSS in the first place. Ideally this should not happen as the clinician should pick at least one or more
+    "selectedMedications": ["Medication/DrugTLaba"] //This list includes references to all copd drugs the clinician has selected to submit to the DSS.
+  } //So, in this example, DSS provides a personalised care plan which includes LABA medication but also takes into account the other drugs not selected when giving info to the clinician
+} // If list empty (hence not added to hook instance), by default all Medications in Bundle/selected_treatments are taken as selected. Hence, we are looking at the suggestions made by the DSS in the first place. Ideally this should not happen as the clinician should pick at least one or more
