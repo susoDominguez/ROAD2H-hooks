@@ -253,6 +253,24 @@ Field | Optionality | Prefetch Token | Type | Description
       "entry": [
         {
           "resource": {
+            "resourceType": "Condition",
+            "id": "copd_diagnosis",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://hl7.org/fhir/sid/icd-10",
+                  "code": "J44.9",
+                  "display": "Chronic obstructive pulmonary disease, unspecified"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
+          }
+        },
+        {
+          "resource": {
             "resourceType": "Observation",
             "id": "cat_score_curr",
             "status": "preliminary",
