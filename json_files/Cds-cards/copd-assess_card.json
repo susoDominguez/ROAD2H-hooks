@@ -27,7 +27,7 @@
                     "valueId": "16778163"
                   },
                   {
-                    "name": "medicationBundle", //all medication resources that will be referenced in COPD group lists
+                    "name": "medicationBundle",
                     "resource": {
                       "resourceType": "Bundle",
                       "id": "medicationBundle",
@@ -120,7 +120,7 @@
                         {
                           "resource": {
                             "resourceType": "Medication",
-                            "id": "DrugTLabaIcs",
+                            "id": "DrugCatLabaIcs",
                             "code": {
                               "coding": [
                                 {
@@ -134,7 +134,7 @@
                         {
                           "resource": {
                             "resourceType": "Medication",
-                            "id": "DrugTLabaLamaIcs",
+                            "id": "DrugCatLabaLamaIcs",
                             "code": {
                               "coding": [
                                 {
@@ -151,7 +151,6 @@
                   {
                     "name": "copdGroupA",
                     "part": [
-                      //dynamically created by DSS but ALWAYS part[0] is the code to be matched against, and part[1] is list of TOP preferences and part[size - 1] is list of LEAST prefs within group
                       {
                         "name": "code",
                         "valueCoding": {
@@ -161,7 +160,7 @@
                         }
                       },
                       {
-                        //Now the medication resources are given  by the DSS already ordered (LIST resource) using the COPD guidelines
+                      
                         "name": "medicationPreference1",
                         "resource": {
                           "resourceType": "List",
@@ -230,7 +229,7 @@
                   {
                     "name": "copdGroupB",
                     "part": [
-                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                     
                       {
                         "name": "code",
                         "valueCoding": {
@@ -281,7 +280,7 @@
                   {
                     "name": "copdGroupC",
                     "part": [
-                      //dynamic but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                     
                       {
                         "name": "code",
                         "valueCoding": {
@@ -300,7 +299,7 @@
                           "entry": [
                             {
                               "item": {
-                                "reference": "Medication/DrugCatLamaLaba"
+                                "reference": "Medication/DrugCatLabaLama"
                               }
                             }
                           ]
@@ -348,7 +347,7 @@
                   {
                     "name": "copdGroupD",
                     "part": [
-                      //dynamically created but part[1] is list of top preferences and part[size - 1] is list of bottom prefs within group
+                     
                       {
                         "name": "code",
                         "valueCoding": {
@@ -367,7 +366,7 @@
                           "entry": [
                             {
                               "item": {
-                                "reference": "Medication/DrugTLabaIcs"
+                                "reference": "Medication/DrugCatLabaIcs"
                               }
                             }
                           ]
@@ -404,7 +403,7 @@
                             },
                             {
                               "item": {
-                                "reference": "Medication/DrugCatLama"
+                                "reference": "Medication/DrugTLama"
                               }
                             }
                           ]
@@ -429,10 +428,10 @@
                     ]
                   },
                   {
-                    "name": "assessedCopdStage", //This is the COPD group suggested by the DSS after processing the patient's data from the hook
+                    "name": "assessedCopdStage", 
                     "valueCoding": {
                       "system": "http://snomed.info/sct",
-                      "code": "1097881000000104", //find the matching code in one of 'copdGroup[A|B|C|D].part[0].valueCoding.code' values.
+                      "code": "1097881000000104",
                       "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                     }
                   }
