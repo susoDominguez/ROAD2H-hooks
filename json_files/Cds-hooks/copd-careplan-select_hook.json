@@ -1,10 +1,10 @@
 {
-  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", //required. unique id to be created for each hook request instance. If problematic, just use this one for all, as we dont work with live patients.
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", 
   "hook": "copd-careplan-select",
   "context": {
-    "encounterId": "285064-0", //if system is not able to provide one for each encounter, just leave fixed
+    "encounterId": "285064-0", 
     "patientId": "1677163",
-    "birthDate": "1970-10-03T00:00:00+01:00", //what's Heliant's preferred format?
+    "birthDate": "03.10.1970 00:00",
     "smokingStatus": {
       "resourceType": "Observation",
       "id": "smoking_status",
@@ -49,7 +49,6 @@
       "id": "comorbiditiesBundle",
       "type": "collection",
       "entry": [
-        //if a patient does not have a comorbidity, do not add the resource
         {
           "resource": {
             "resourceType": "Condition",
@@ -97,7 +96,7 @@
           "resource": {
             "resourceType": "Immunization",
             "id": "influenza_immunization",
-            "status": "completed", //range of values: completed | not-done
+            "status": "completed", 
             "vaccineCode": {
               "coding": [
                 {
@@ -107,7 +106,7 @@
                 }
               ]
             },
-            "occurrenceDateTime": "2020-10-26T18:00:00+01:00" //if 'not-done', this field is discarded
+            "occurrenceDateTime": "2020-10-26T18:00:00+01:00"
           }
         },
         {
@@ -196,7 +195,6 @@
             "id": "selected_treatments",
             "type": "collection",
             "entry": [
-              //by default it must have all the medications suggested by the DSS as a response to request hook copd-assess, plus any other COPD additional medication (possibly none) the clinician selects.
               {
                 "resource": {
                   "resourceType": "Medication",
@@ -246,6 +244,6 @@
         }
       ]
     },
-    "selectedMedications": ["Medication/DrugTLaba"] //This list includes references to all copd drugs the clinician has selected to submit to the DSS.
-  } //So, in this example, DSS provides a personalised care plan which includes LABA medication but also takes into account the other drugs not selected when giving info to the clinician
-} // If list empty (hence not added to hook instance), by default all Medications in Bundle/selected_treatments are taken as selected. Hence, we are looking at the suggestions made by the DSS in the first place. Ideally this should not happen as the clinician should pick at least one or more
+    "selectedMedications": ["Medication/DrugTLaba"] 
+  } 
+}

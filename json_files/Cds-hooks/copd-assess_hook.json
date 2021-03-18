@@ -1,10 +1,10 @@
 {
-  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", //unique id for each request. Could be left fixed as we are not working with live patietns
-  "fhirServer": "https://example.org/fhir", //Heliant's fhir server. OPTIONAL
+  "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea",
+  "fhirServer": "https://example.org/fhir",
   "hook": "copd-assess",
   "context": {
     "encounterId": "987654",
-    "patientId": "1677163", //just added. Simply bc it is stated in Condition resources anyway.
+    "patientId": "1677163",
     "medication": {
       "resourceType": "Medication",
       "id": "current_medication",
@@ -23,7 +23,7 @@
       "entry": [
         {
           "resource": {
-            "resourceType": "Observation", //back to Observation
+            "resourceType": "Observation", 
             "id": "copd_group_prev",
             "status": "final",
             "code": {
@@ -45,7 +45,6 @@
               ]
             },
             "referenceRange": [
-              //range of values for COPD Group
               {
                 "low": {
                   "system": "http://snomed.info/sct",
@@ -83,7 +82,6 @@
             "id": "cat_score_prev",
             "status": "final",
             "code": {
-              //this code doesnt change
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
@@ -211,7 +209,6 @@
             "status": "final",
             "valueInteger": 0,
             "code": {
-              //this code never changes
               "coding": [
                 {
                   "system": "http://snomed.info/sct",
@@ -303,7 +300,6 @@
             "resourceType": "Observation",
             "id": "mmrc_curr",
             "status": "preliminary",
-            "valueInteger": 1,
             "code": {
               "coding": [
                 {
@@ -313,6 +309,7 @@
                 }
               ]
             },
+            "valueInteger": 1,
             "referenceRange": [
               {
                 "low": {
@@ -395,7 +392,6 @@
       ]
     },
     "asthma": {
-      //if patient does not have asthma, do not add this resource
       "resourceType": "Condition",
       "id": "asthma",
       "code": {
