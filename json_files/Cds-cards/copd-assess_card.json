@@ -1,14 +1,14 @@
 {
   "cards": [
     {
-      "summary": "assessment of COPD",
+      "summary": "Assessment of COPD",
       "indicator": "info",
       "source": {
-        "label": "ROAD2H Clinical Decision Support System"
+        "label": "GOLD 2017 COPD assessment"
       },
       "suggestions": [
         {
-          "label": "COPD assessment support",
+          "label": "COPD assessment decision support",
           "uuid": "2803202017350345",
           "actions": [
             {
