@@ -283,7 +283,7 @@ Field | Optionality | Prefetch Token | Type | Description
                 }
               ]
             },
-            " ": 8,
+            "valueInteger": 8,
             "referenceRange": [
               {
                 "low": {
