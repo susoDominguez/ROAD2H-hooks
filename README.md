@@ -13,3 +13,6 @@ Contains CDS card responses to the examples displayed in the CDS hook definition
 
 ## ForecastEffect FHIR Resource
 This folder contains the schema for the new FHIR resource which describes potential effects if a particular care action is applied, as described in the TMR model.
+
+## Database forms
+This folder holds the forms feds to the Data Management Interoperability Microservice in order to extract and manipulate data from a COPD patient to convert them into new data for finding current COPD severity and drugs priority, copd-assess hook, or for providing ontology-based decision support using the TMR web service, copd-careplan-select hook. 

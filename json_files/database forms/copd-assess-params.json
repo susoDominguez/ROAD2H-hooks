@@ -1,0 +1,2708 @@
+/* 1 */
+{
+    "_id" : ObjectId("60356a3e44e23a4dbd5b689f"),
+    "parameter" : "assessed-copd-group",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "label" : "exacerbations in the past year",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current CAT score",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current mMRC scale",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : false
+        }, 
+        {
+            "Jpath" : undefined,
+            "typeOf" : "number",
+            "defaultVal" : 2,
+            "isMandatory" : true
+        }, 
+        {
+            "Jpath" : undefined,
+            "typeOf" : "number",
+            "defaultVal" : 10,
+            "isMandatory" : true
+        }
+    ],
+    "actionList" : [ 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0, 
+                    3
+                ],
+                "compare" : "lt"
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    1, 
+                    4
+                ],
+                "compare" : "lt"
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    2, 
+                    3
+                ],
+                "compare" : "lt"
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 0
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    1
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 1
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "resultArgListIndex" : 2,
+                "pathListIndex" : [ 
+                    2
+                ]
+            }
+        }
+    ],
+    "resultList" : [ 
+        {
+            "argList" : [ 
+                true, 
+                true, 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                NumberLong(1097871000000101)
+            ]
+        }, 
+        {
+            "argList" : [ 
+                true, 
+                false, 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                NumberLong(1097881000000104)
+            ]
+        }, 
+        {
+            "argList" : [ 
+                false, 
+                true, 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                NumberLong(1097891000000102)
+            ]
+        }, 
+        {
+            "argList" : [ 
+                false, 
+                false, 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                NumberLong(1097901000000101)
+            ]
+        }
+    ]
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("604a0b478faa68812d73e9b1"),
+    "parameter" : "copdGroupA",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "label" : "previous medication",
+            "Jpath" : "$..medication.code.coding[0].code",
+            "typeOf" : "string",
+            "defaultVal" : "Saba",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous COPD group code",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='1097861000000108')].valueCodeableConcept.coding[0].code",
+            "typeOf" : "number",
+            "defaultVal" : NumberLong(1097871000000101),
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current CAT score value",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous CAT score value",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current mMRC scale value",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous mMRC scale value",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "exacerbations within the last year",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "exacerbations at last visit",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "asthma",
+            "Jpath" : "$..asthma.code.coding[0].code",
+            "typeOf" : "boolean",
+            "defaultVal" : undefined,
+            "isMandatory" : false
+        }
+    ],
+    "actionList" : [ 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 0
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    1
+                ],
+                "resultArgListIndex" : 1
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    2, 
+                    3
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    2
+                ],
+                "resultArgListIndex" : 2
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    4, 
+                    5
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    4
+                ],
+                "resultArgListIndex" : 3
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    6, 
+                    7
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    6
+                ],
+                "resultArgListIndex" : 4
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    8
+                ],
+                "resultArgListIndex" : 5
+            }
+        }
+    ],
+    "resultList" : [ 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Saba"
+                    ], 
+                    [ 
+                        "SabaSama", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Sama"
+                    ], 
+                    [ 
+                        "SabaSama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "SabaSama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaIcs", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLamaIcs", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLamaIcs"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }
+    ]
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("60913a4770f808ab183ed424"),
+    "parameter" : "copdGroupB",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "Xpath" : "$..medication.code.coding[0].code",
+            "typeOf" : "string",
+            "defaultVal" : "Saba",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='1097861000000108')].valueCodeableConcept.coding[0].code",
+            "typeOf" : "number",
+            "defaultVal" : NumberLong(1097871000000101),
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "Xpath" : "$..asthma.code.coding[0].code",
+            "typeOf" : "boolean",
+            "defaultVal" : undefined,
+            "isMandatory" : false
+        }
+    ],
+    "actionList" : [ 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 0
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    1
+                ],
+                "resultArgListIndex" : 1
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    2, 
+                    3
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    2
+                ],
+                "resultArgListIndex" : 2
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    4, 
+                    5
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    4
+                ],
+                "resultArgListIndex" : 3
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    6, 
+                    7
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    6
+                ],
+                "resultArgListIndex" : 4
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    8
+                ],
+                "resultArgListIndex" : 5
+            }
+        }
+    ],
+    "resultList" : [ 
+        {
+            "argList" : [ 
+                "SabaSama", 
+                NumberLong(1097871000000101), 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaIcs", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLamaIcs", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Lama", 
+                        "Laba"
+                    ], 
+                    [ 
+                        "LabaLamaIcs"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Laba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLama", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama", 
+                        "Laba"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaIcs", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLamaIcs", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLamaIcs"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "Lama"
+                    ], 
+                    [ 
+                        "Laba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "LabaLama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba", 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "LabaLama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LamaLaba", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama", 
+                        "Laba"
+                    ], 
+                    [ 
+                        "LabaLama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LamaLaba", 
+                [ 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "Lama", 
+                        "Laba"
+                    ]
+                ]
+            ]
+        }
+    ]
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("60913a6470f808ab183ed433"),
+    "parameter" : "copdGroupC",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "Jpath" : "$..medication.code.coding[0].code",
+            "typeOf" : "string",
+            "defaultVal" : "Saba",
+            "isMandatory" : true,
+            "label" : "current medication"
+        }, 
+        {
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='1097861000000108')].valueCodeableConcept.coding[0].code",
+            "typeOf" : "number",
+            "defaultVal" : NumberLong(1097871000000101),
+            "isMandatory" : true,
+            "label" : "previous COPD group"
+        }, 
+        {
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "previous CAT score"
+        }, 
+        {
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "current CAT score"
+        }, 
+        {
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "previous mMRC scale"
+        }, 
+        {
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "current mMRC scale"
+        }, 
+        {
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "number of exacerbations at previous visit"
+        }, 
+        {
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true,
+            "label" : "number of exacerbations at current visit"
+        }, 
+        {
+            "Jpath" : "$..asthma.code.coding[0].code",
+            "typeOf" : "boolean",
+            "defaultVal" : undefined,
+            "isMandatory" : false,
+            "label" : "asthma"
+        }
+    ],
+    "actionList" : [ 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 0
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    1
+                ],
+                "resultArgListIndex" : 1
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    2, 
+                    3
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    2
+                ],
+                "resultArgListIndex" : 2
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    4, 
+                    5
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    4
+                ],
+                "resultArgListIndex" : 3
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    6, 
+                    7
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    6
+                ],
+                "resultArgListIndex" : 4
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    8
+                ],
+                "resultArgListIndex" : 5
+            }
+        }
+    ],
+    "resultList" : [ 
+        {
+            "argList" : [ 
+                "LamaLaba", 
+                [ 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "Lama", 
+                        "LabaIcs"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaIcs", 
+                [ 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    false, 
+                    true
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama", 
+                        "LamaLaba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LamaLabaIcs", 
+                [ 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    false, 
+                    true
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLabaIcs"
+                    ], 
+                    [ 
+                        "LamaLaba", 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LamaLaba", 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LamaLaba", 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "SabaSama", 
+                [ 
+                    NumberLong(1097871000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "LamaLaba", 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097881000000104)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Laba", 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097881000000104)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LamaLaba", 
+                [ 
+                    NumberLong(1097881000000104)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097891000000102)
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097891000000102)
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097891000000102)
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097891000000102)
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    false
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097891000000102)
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    true
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LamaLaba"
+                    ], 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "Lama"
+                    ]
+                ]
+            ]
+        }
+    ]
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("60913a7370f808ab183ed43f"),
+    "parameter" : "copdGroupD",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "label" : "current medication",
+            "Jpath" : "$..medication.code.coding[0].code",
+            "typeOf" : "string",
+            "defaultVal" : "Saba",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous COPD group code",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='1097861000000108')].valueCodeableConcept.coding[0].code",
+            "typeOf" : "number",
+            "defaultVal" : NumberLong(1097871000000101),
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current CAT score",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous CAT score",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='446660005')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "current mMRC score",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "previous mMRC score",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='450755002')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "exacerbations at current assessment",
+            "Jpath" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : undefined,
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "exacerbations at previous assessment",
+            "Jpath" : "$..previousAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "typeOf" : "number",
+            "defaultVal" : "$..currentAssessment.entry[?(@.resource.resourceType==='Observation' && @.resource.code.coding[0].code==='723245007')].resource.valueInteger",
+            "isMandatory" : true
+        }, 
+        {
+            "label" : "asthma code",
+            "Jpath" : "$..asthma.code.coding[0].code",
+            "typeOf" : "boolean",
+            "defaultVal" : undefined,
+            "isMandatory" : false
+        }
+    ],
+    "actionList" : [ 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    0
+                ],
+                "compare" : "eq",
+                "resultArgListIndex" : 0
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    1
+                ],
+                "resultArgListIndex" : 1
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    2, 
+                    3
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    2
+                ],
+                "resultArgListIndex" : 2
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    4, 
+                    5
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    4
+                ],
+                "resultArgListIndex" : 3
+            }
+        }, 
+        {
+            "action" : "comparison",
+            "details" : {
+                "pathListIndex" : [ 
+                    6, 
+                    7
+                ],
+                "compare" : "lte"
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    6
+                ],
+                "resultArgListIndex" : 4
+            }
+        }, 
+        {
+            "action" : "inRHS",
+            "details" : {
+                "pathListIndex" : [ 
+                    8
+                ],
+                "resultArgListIndex" : 5
+            }
+        }
+    ],
+    "resultList" : [ 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Saba"
+                    ], 
+                    [ 
+                        "SabaSama", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                true, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Sama"
+                    ], 
+                    [ 
+                        "SabaSama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Sama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Saba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                false, 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "SabaSama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Sama", 
+                        "Saba"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Laba", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Laba"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLama"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "Lama", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "Lama"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaIcs", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaIcs"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }, 
+        {
+            "argList" : [ 
+                "LabaLamaIcs", 
+                [ 
+                    NumberLong(1097871000000101), 
+                    NumberLong(1097881000000104), 
+                    NumberLong(1097891000000102), 
+                    NumberLong(1097901000000101)
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ], 
+                [ 
+                    true, 
+                    false
+                ]
+            ],
+            "outcome" : [ 
+                [ 
+                    [ 
+                        "LabaLamaIcs"
+                    ], 
+                    [ 
+                        "SabaSama"
+                    ], 
+                    [ 
+                        "Saba", 
+                        "Sama"
+                    ]
+                ]
+            ]
+        }
+    ]
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("60915e1f70f808ab183ed894"),
+    "parameter" : "patientId",
+    "cigInvolved" : [],
+    "pathList" : [ 
+        {
+            "label" : "patient id",
+            "Jpath" : "$..patientId",
+            "typeOf" : "string",
+            "defaultVal" : undefined,
+            "isMandatory" : false
+        }
+    ],
+    "actionList" : [],
+    "resultList" : []
+}
