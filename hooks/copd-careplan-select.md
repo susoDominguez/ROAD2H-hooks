@@ -23,8 +23,7 @@ Field | Optionality | Prefetch Token | Type | Description
 <mark>`comorbidities`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Conditions representing CKD or CVD diagnosis which are present in the patient's record</mark>
 <mark>`immunizationStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Immunizations denoting whether the patient has taken the annual influenza vaccine or the pneumococcal vaccine</mark>
 <mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Observation and CarePlan representing the identified GOLD COPD group for the former, and COPD treatments -implemented as Medication resources- suitable for the identified group, for the latter. Observation and Medication resources have `preliminary` status</mark>
-<mark>`preferences`</mark> | OPTIONAL | No | *array* | <mark>The FHIR id(s) of the preferred  medication(s) from the initial selection made by the practitioner.
-The preferences field references FHIR resources from the CarePlan in the copdAssessment Bundle. For example, Medication/DrugTLaba .</mark>
+<mark>`selectedMedications`</mark> | OPTIONAL | No | *array* | <mark>The FHIR id(s) of the medication(s) selected by the practitioner.The selectedMedications field references FHIR resources from the CarePlan in the copdAssessment Bundle. For example, Medication/DrugTLaba.</mark>
 
 ### Example
 
