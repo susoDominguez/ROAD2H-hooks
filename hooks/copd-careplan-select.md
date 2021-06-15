@@ -16,14 +16,14 @@
 
 Field | Optionality | Prefetch Token | Type | Description
 ----- | -------- | ---- | ---- | ----
-<mark>`encounterId`</mark> | OPTIONAL | No | *string* | <mark>identifier of current encounter</mark>
-<mark>`patientId`</mark> | OPTIONAL | No | *string* | <mark>identifier of current patient</mark>
+<mark>`encounterId`</mark> | REQUIRED | No | *string* | <mark>identifier of current encounter</mark>
+<mark>`patientId`</mark> | REQUIRED | No | *string* | <mark>identifier of current patient</mark>
 <mark>`birthDate`</mark> | REQUIRED | No | *string* | <mark>date of birth of patient, used to identify whether Pneumococcal vaccine should be suggested for patients of 65 years of age or older</mark>
 <mark>`smokingStatus`</mark> | REQUIRED | No | *object* | <mark>Observation which identifies current patient as either a regular smoker or not</mark>
 <mark>`comorbidities`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Conditions representing CKD or CVD diagnosis which are present in the patient's record</mark>
 <mark>`immunizationStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Immunizations denoting whether the patient has taken the annual influenza vaccine or the pneumococcal vaccine</mark>
-<mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Observation and CarePlan representing the identified GOLD COPD group for the former, and COPD treatments -implemented as Medication resources- suitable for the identified group, for the latter. Observation and Medication resources have `preliminary` status</mark>
-<mark>`selectedMedications`</mark> | OPTIONAL | No | *array* | <mark>The FHIR id(s) of the medication(s) selected by the practitioner.The selectedMedications field references FHIR resources from the CarePlan in the copdAssessment Bundle. For example, Medication/DrugTLaba.</mark>
+<mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle composed of Observation and Medication Bundle  representing the identified GOLD COPD group for the former, and COPD drug types -implemented as Medication resources- denoting the treatments selected by the clinician.</mark>
+<mark>`suggestedTreatments`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Medications as suggested by the COPD CDS service. This object is fed to the conflict resolution engine to provide alternative treatments to the selected ones in case conflicts arise with the selected choices.</mark>
 
 ### Example
 
@@ -228,6 +228,31 @@ Field | Optionality | Prefetch Token | Type | Description
               {
                 "resource": {
                   "resourceType": "Medication",
+                  "id": "DrugCatLabaLamaIcs",
+                  "code": {
+                    "coding": [
+                      {
+                        "code": "LabaLamaIcs",
+                        "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "suggestedTreatmentsByCdsService": {
+          "resource": {
+            "resourceType": "Bundle",
+            "id": "suggested_treatments",
+            "type": "collection",
+            "entry": [
+              {
+                "resource": {
+                  "resourceType": "Medication",
                   "id": "DrugTLaba",
                   "code": {
                     "coding": [
@@ -271,10 +296,7 @@ Field | Optionality | Prefetch Token | Type | Description
               }
             ]
           }
-        }
-      ]
-    },
-    "selectedMedications": ["Medication/DrugTLaba"]
+      }
   } 
 } 
 
