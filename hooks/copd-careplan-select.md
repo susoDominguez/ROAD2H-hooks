@@ -23,7 +23,7 @@ Field | Optionality | Prefetch Token | Type | Description
 <mark>`comorbidities`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Conditions representing CKD or CVD diagnosis which are present in the patient's record</mark>
 <mark>`immunizationStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Immunizations denoting whether the patient has taken the annual influenza vaccine or the pneumococcal vaccine</mark>
 <mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle composed of Observation and Medication Bundle  representing the identified GOLD COPD group for the former, and COPD drug types -implemented as Medication resources- denoting the treatments selected by the clinician.</mark>
-<mark>`suggestedTreatments`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Medications as suggested by the COPD CDS service. This object is fed to the conflict resolution engine to provide alternative treatments to the selected ones in case conflicts arise with the selected choices.</mark>
+<mark>`suggestedTreatmentsByCdsService`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Medications as suggested by the COPD CDS service. This object is fed to the conflict resolution engine to provide alternative treatments to the selected ones in case conflicts arise with the selected choices.</mark>
 
 ### Example
 
