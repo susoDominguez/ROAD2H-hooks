@@ -245,7 +245,6 @@ Field | Optionality | Prefetch Token | Type | Description
       ]
     },
     "suggestedTreatmentsByCdsService": {
-          "resource": {
             "resourceType": "Bundle",
             "id": "suggested_treatments",
             "type": "collection",
@@ -295,7 +294,6 @@ Field | Optionality | Prefetch Token | Type | Description
                 }
               }
             ]
-          }
       }
   } 
 } 
