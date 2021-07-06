@@ -4,7 +4,7 @@
   "context": {
     "encounterId": "285064-0", 
     "patientId": "1677163",
-    "birthDate": "03.10.1970 00:00",
+    "birthDate": "1970-10-03T00:00:00+01:00", 
     "smokingStatus": {
       "resourceType": "Observation",
       "id": "smoking_status",
@@ -96,7 +96,7 @@
           "resource": {
             "resourceType": "Immunization",
             "id": "influenza_immunization",
-            "status": "completed", 
+            "status": "completed",
             "vaccineCode": {
               "coding": [
                 {
@@ -106,7 +106,7 @@
                 }
               ]
             },
-            "occurrenceDateTime": "2020-10-26T18:00:00+01:00"
+            "occurrenceDateTime": "2020-10-26T18:00:00+01:00" 
           }
         },
         {
@@ -157,7 +157,6 @@
               ]
             },
             "referenceRange": [
-              //range of values for COPD Group
               {
                 "low": {
                   "system": "http://snomed.info/sct",
@@ -193,6 +192,30 @@
           "resource": {
             "resourceType": "Bundle",
             "id": "selected_treatments",
+            "type": "collection",
+            "entry": [
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaLamaIcs",
+                  "code": {
+                    "coding": [
+                      {
+                        "code": "LabaLamaIcs",
+                        "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "suggestedTreatmentsByCdsService": {
+            "resourceType": "Bundle",
+            "id": "suggested_treatments",
             "type": "collection",
             "entry": [
               {
@@ -240,10 +263,6 @@
                 }
               }
             ]
-          }
-        }
-      ]
-    },
-    "selectedMedications": ["Medication/DrugTLaba"] 
+      }
   } 
 }
