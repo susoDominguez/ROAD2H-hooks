@@ -1,4 +1,4 @@
-# <mark>`copd-careplan-select`</mark>
+# <mark>`copd-careplan-review`</mark>
 
 | Metadata | Value
 | ---- | ----
@@ -8,7 +8,7 @@
 
 ## Workflow
 
-<mark>The `copd-careplan-select` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD 2017 COPD group (A, B, C, D) and selecting one or more suitable COPD treatment pathways. The CDS Service then provides a collection of patient-centered care plan proposals, based on GOLD 2017 COPD Clinical Guideline (CG), where each of which contains non-conflictive clinical recommendations taking into account the practitioner choices -GOLD COPD group and treatment pathways-, immunization, lifestyle -e.g., smoking status- and comorbidities present in the patient's record, in particular cardiovascular and chronic kidney diseases, which could potentially interfere with the COPD treatment.</mark>
+<mark>The `copd-careplan-review` hook fires when a practitioner has assessed the COPD case of the patient, assigning a GOLD 2017 COPD group (A, B, C, D) and selecting one or more suitable COPD treatments. The CDS Service then provides a collection of patient-centered care plan proposals, based on GOLD 2017 COPD Clinical Guideline, where each of which contains non-conflictive clinical recommendations taking into account the practitioner choices -GOLD COPD group and treatment pathways-, immunization, lifestyle -e.g., smoking status- and comorbidities present in the patient's record, in particular cardiovascular and chronic kidney diseases, which could potentially interfere with the COPD treatment.</mark>
 
 ## Context
 
@@ -22,7 +22,7 @@ Field | Optionality | Prefetch Token | Type | Description
 <mark>`smokingStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Observation which identifies current patient as either a regular smoker or not.</mark>
 <mark>`comorbidities`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Conditions representing CKD or CVD diagnosis which are currently active in the patient's record.</mark>
 <mark>`immunizationStatus`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle of Immunizations denoting whether the patient has taken the annual influenza vaccine, or the pneumococcal vaccine if 65 years of age or older.</mark>
-<mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle composed of Observation and a Medication Bundle, representing the identified GOLD 2017 COPD group, and clinician selected COPD drug types -implemented as Medication resources- being taking into consideration to treat the patient,respectively.</mark>
+<mark>`copdAssessment`</mark> | REQUIRED | No | *object* | <mark>FHIR Bundle composed of Observation and a Medication Bundle, representing the identified GOLD 2017 COPD group and the clinician-selected COPD drug types -implemented as Medication resources- being taking into consideration to treat the patient, respectively.</mark>
 <mark>`suggestedTreatmentsByCdsService`</mark> | OPTIONAL | No | *object* | <mark>FHIR Bundle of Medications as suggested by the COPD CDS service. This object is fed to the conflict resolution engine to provide alternative treatments to the selected ones in case conflicts arise with the selected choices.</mark>
 
 ### Example
@@ -31,7 +31,7 @@ Field | Optionality | Prefetch Token | Type | Description
 ```json
 {
   "hookInstance": "d1577c69-dfbe-44ad-ba6d-3e05e953b2ea", 
-  "hook": "copd-careplan-select",
+  "hook": "copd-careplan-review",
   "context": {
     "encounterId": "285064-0", 
     "patientId": "1677163",

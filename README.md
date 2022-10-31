@@ -8,7 +8,7 @@ http://www.road2h.org/
 
 `````
 ## Hooks folder
-The folder contains the pair of hook specifications, with examples, to trigger CDS services for COPD management. The hook with ID 'copd-assess' provides patient information on previous and current COPD symptoms, and is associated with the COPD severity assessment CDS service. The hook with ID 'copd-careplan-select' provides patient information on active COPD treatments, the current pulmonologist-verified COPD severity assessment as well as on the status of current vaccinations and active comorbidities. This hook is associated with the COPD treatment planning CDS service.
+The folder contains the pair of hook specifications, with examples, to trigger CDS services for COPD management. The hook with ID 'copd-assess' provides patient information on previous and current COPD symptoms, and is associated with the COPD severity assessment CDS service. The hook with ID 'copd-careplan-review' provides patient information on active COPD treatments, the current pulmonologist-verified COPD severity assessment as well as on the status of current vaccinations and active comorbidities. This hook is associated with the COPD treatment planning CDS service.
 
 ## Json_files
 Contains CDS card responses to the examples displayed in the CDS hook definitions.
