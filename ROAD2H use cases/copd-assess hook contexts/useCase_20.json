@@ -11,9 +11,9 @@
         "code": {
           "coding": [
             {
-              "system": "http://anonymous.org/data/DrugTSaba",
-              "code": "Saba",
-              "display": "administer medication containing SABA"
+              "system": "http://anonymous.org/data/DrugTSama",
+              "code": "Sama",
+              "display": "administer medication containing SAMA"
             }
           ]
         }
@@ -39,8 +39,8 @@
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "1097891000000102",
-                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
+                    "code": "1097871000000101",
+                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
                   }
                 ]
               },
@@ -90,7 +90,7 @@
                   }
                 ]
               },
-              "valueInteger": 6,
+              "valueInteger": 7,
               "referenceRange": [
                 {
                   "low": {
@@ -207,7 +207,7 @@
               "resourceType": "Observation",
               "id": "copd_exacerbations_number_prev",
               "status": "final",
-              "valueInteger": 3,
+              "valueInteger": 1,
               "code": {
                 "coding": [
                   {
@@ -256,7 +256,7 @@
                   }
                 ]
               },
-              "valueInteger": 10,
+              "valueInteger": 6,
               "referenceRange": [
                 {
                   "low": {
@@ -390,6 +390,22 @@
             }
           }
         ]
+      },
+      "asthma": {
+        "resourceType": "Condition",
+        "id": "asthma",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "195967001",
+              "display": "Asthma"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/1677163"
+        }
       }
     }
   }

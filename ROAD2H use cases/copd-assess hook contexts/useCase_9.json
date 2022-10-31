@@ -11,9 +11,9 @@
         "code": {
           "coding": [
             {
-              "system": "http://anonymous.org/data/DrugTSaba",
-              "code": "Saba",
-              "display": "administer medication containing SABA"
+              "system": "http://anonymous.org/data/DrugTLaba",
+              "code": "Laba",
+              "display": "administer medication containing LABA"
             }
           ]
         }
@@ -39,8 +39,8 @@
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "1097891000000102",
-                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
+                    "code": "1097881000000104",
+                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                   }
                 ]
               },
@@ -90,7 +90,7 @@
                   }
                 ]
               },
-              "valueInteger": 6,
+              "valueInteger": 22,
               "referenceRange": [
                 {
                   "low": {
@@ -157,7 +157,7 @@
                   }
                 ]
               },
-              "valueInteger": 0,
+              "valueInteger": 1,
               "referenceRange": [
                 {
                   "low": {
@@ -207,7 +207,7 @@
               "resourceType": "Observation",
               "id": "copd_exacerbations_number_prev",
               "status": "final",
-              "valueInteger": 3,
+              "valueInteger": 0,
               "code": {
                 "coding": [
                   {
@@ -256,7 +256,7 @@
                   }
                 ]
               },
-              "valueInteger": 10,
+              "valueInteger": 20,
               "referenceRange": [
                 {
                   "low": {
@@ -377,7 +377,7 @@
               "resourceType": "Observation",
               "id": "copd_exacerbations_number_curr",
               "status": "preliminary",
-              "valueInteger": 2,
+              "valueInteger": 0,
               "code": {
                 "coding": [
                   {
