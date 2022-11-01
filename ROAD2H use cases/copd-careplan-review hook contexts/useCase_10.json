@@ -4,7 +4,7 @@
     "context": {
       "encounterId": "285064-0", 
       "patientId": "1677163",
-      "birthDate": "1970-10-03T00:00:00+01:00", 
+      "birthDate": "1957-10-03T00:00:00+01:00", 
       "smokingStatus": {
         "resourceType": "Observation",
         "id": "smoking_status",
@@ -52,13 +52,13 @@
           {
             "resource": {
               "resourceType": "Condition",
-              "id": "cvd",
+              "id": "ht",
               "code": {
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "49601007",
-                    "display": "Disorder of cardiovascular system"
+                    "code": "38341003",
+                    "display": "Hypertensive disorder, systemic arterial"
                   }
                 ]
               },
@@ -70,13 +70,31 @@
           {
             "resource": {
               "resourceType": "Condition",
-              "id": "ckd",
+              "id": "hch",
               "code": {
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "709044004",
-                    "display": "Chronic kidney disease"
+                    "code": "13644009",
+                    "display": "Hypercholesterolemia"
+                  }
+                ]
+              },
+              "subject": {
+                "reference": "Patient/1677163"
+              }
+            }
+          },
+          {
+            "resource": {
+              "resourceType": "Condition",
+              "id": "ang",
+              "code": {
+                "coding": [
+                  {
+                    "system": "http://snomed.info/sct",
+                    "code": "194828000",
+                    "display": "Angina"
                   }
                 ]
               },
@@ -96,7 +114,7 @@
             "resource": {
               "resourceType": "Immunization",
               "id": "influenza_immunization",
-              "status": "completed",
+              "status": "not-done",
               "vaccineCode": {
                 "coding": [
                   {
@@ -151,8 +169,8 @@
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "1097871000000101",
-                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
+                    "code": "1097881000000104",
+                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group B"
                   }
                 ]
               },
@@ -197,27 +215,17 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugCatLabaLamaIcs",
+                    "id": "DrugCatLabaLama",
                     "code": {
                       "coding": [
                         {
-                          "code": "LabaLamaIcs",
-                          "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                          "code": "LabaLama",
+                          "display": "administer medication containing a combination of LABA + LAMA"
                         }
                       ]
                     }
                   }
-                }
-              ]
-            }
-          }
-        ]
-      },
-      "suggestedTreatmentsByCdsService": {
-              "resourceType": "Bundle",
-              "id": "suggested_treatments",
-              "type": "collection",
-              "entry": [
+                },
                 {
                   "resource": {
                     "resourceType": "Medication",
@@ -239,9 +247,32 @@
                     "code": {
                       "coding": [
                         {
-                          "system": "http://anonymous.org/data/DrugTLama",
                           "code": "Lama",
-                          "display": "administer medication containing a  of LAMA"
+                          "display": "administer medication containing LAMA"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "suggestedTreatmentsByCdsService": {
+              "resourceType": "Bundle",
+              "id": "suggested_treatments",
+              "type": "collection",
+              "entry": [
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugCatLabaLama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "LabaLama",
+                          "display": "administer medication containing a combination of LABA + LAMA"
                         }
                       ]
                     }
@@ -250,13 +281,26 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugCatLabaLama",
+                    "id": "DrugTLaba",
                     "code": {
                       "coding": [
                         {
-                          "system": "http://anonymous.org/data/DrugCatLabaLama",
-                          "code": "LabaLama",
-                          "display": "administer medication containing a combination of LABA and LAMA"
+                          "code": "Laba",
+                          "display": "administer medication containing LABA"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugTLama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "Lama",
+                          "display": "administer medication containing LAMA"
                         }
                       ]
                     }

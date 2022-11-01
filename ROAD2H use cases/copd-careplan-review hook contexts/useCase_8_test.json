@@ -4,7 +4,7 @@
   "context": {
     "encounterId": "285064-0",
     "patientId": "1677163",
-    "birthDate": "1972-10-03T00:00:00+01:00",
+    "birthDate": "1944-10-03T00:00:00+01:00",
     "smokingStatus": {
       "resourceType": "Observation",
       "id": "smoking_status",
@@ -44,21 +44,70 @@
       "id": "comorbiditiesBundle",
       "type": "collection",
       "entry": [{
-        "resource": {
-          "resourceType": "Condition",
-          "id": "ra",
-          "code": {
-            "coding": [{
-              "system": "http://snomed.info/sct",
-              "code": "69896004",
-              "display": "Rheumatoid arthritis"
-            }]
-          },
-          "subject": {
-            "reference": "Patient/1677163"
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cvd",
+            "code": {
+              "coding": [{
+                "system": "http://snomed.info/sct",
+                "code": "399211009",
+                "display": "History of myocardial infarction"
+              }]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Condition",
+            "id": "hf",
+            "code": {
+              "coding": [{
+                "system": "http://snomed.info/sct",
+                "code": "84114007",
+                "display": "Heart failure"
+              }]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Condition",
+            "id": "ht",
+            "code": {
+              "coding": [{
+                "system": "http://snomed.info/sct",
+                "code": "38341003",
+                "display": "Hypertensive disorder, systemic arterial"
+              }]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Condition",
+            "id": "cp",
+            "code": {
+              "coding": [{
+                "system": "http://snomed.info/sct",
+                "code": "254900004",
+                "display": "Carcinoma of prostate"
+              }]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
           }
         }
-      }]
+      ]
     },
     "immunizationStatus": {
       "resourceType": "Bundle",
@@ -68,7 +117,7 @@
           "resource": {
             "resourceType": "Immunization",
             "id": "influenza_immunization",
-            "status": "not-done",
+            "status": "completed",
             "vaccineCode": {
               "coding": [{
                 "system": "http://snomed.info/sct",
@@ -76,7 +125,7 @@
                 "display": "Vaccine product containing only Influenza virus antigen"
               }]
             },
-            "occurrenceDateTime": "2020-10-26T18:00:00+01:00"
+            "occurrenceDateTime": "2022-10-26T18:00:00+01:00"
           }
         },
         {
@@ -115,8 +164,8 @@
             "valueCodeableConcept": {
               "coding": [{
                 "system": "http://snomed.info/sct",
-                "code": "1097891000000102",
-                "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
+                "code": "1097901000000101",
+                "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group D"
               }]
             },
             "referenceRange": [{
@@ -156,42 +205,54 @@
             "id": "selected_treatments",
             "type": "collection",
             "entry": [{
-              "resource": {
-                "resourceType": "Medication",
-                "id": "DrugTLama",
-                "code": {
-                  "coding": [{
-                    "code": "Lama",
-                    "display": "administer medication containing a combination of LAMA"
-                  }]
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugTLama",
+                  "code": {
+                    "coding": [{
+                      "code": "Lama",
+                      "display": "administer medication containing a combination of LAMA"
+                    }]
+                  }
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaLamaIcs",
+                  "code": {
+                    "coding": [{
+                      "code": "LabaLamaIcs",
+                      "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                    }]
+                  }
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaIcs",
+                  "code": {
+                    "coding": [{
+                      "code": "LabaIcs",
+                      "display": "administer medication containing a combination of LABA + ICS"
+                    }]
+                  }
+                }
+              },
+              {
+                "resource": {
+                  "resourceType": "Medication",
+                  "id": "DrugCatLabaLama",
+                  "code": {
+                    "coding": [{
+                      "code": "LabaLama",
+                      "display": "administer medication containing a combination of LABA + LAMA"
+                    }]
+                  }
                 }
               }
-            },
-            {
-              "resource": {
-                "resourceType": "Medication",
-                "id": "DrugCatLabaIcs",
-                "code": {
-                  "coding": [{
-                    "code": "LabaIcs",
-                    "display": "administer medication containing a combination of LABA + ICS"
-                  }]
-                }
-              }
-            },
-            {
-              "resource": {
-                "resourceType": "Medication",
-                "id": "DrugCatLabaLama",
-                "code": {
-                  "coding": [{
-                    "code": "LabaLama",
-                    "display": "administer medication containing a combination of LABA + LAMA"
-                  }]
-                }
-              }
-            }
-          ]
+            ]
           }
         }
       ]
@@ -208,6 +269,18 @@
               "coding": [{
                 "code": "Lama",
                 "display": "administer medication containing a combination of LAMA"
+              }]
+            }
+          }
+        },
+        {
+          "resource": {
+            "resourceType": "Medication",
+            "id": "DrugCatLabaLamaIcs",
+            "code": {
+              "coding": [{
+                "code": "LabaLamaIcs",
+                "display": "administer medication containing a combination of LABA + LAMA + ICS"
               }]
             }
           }

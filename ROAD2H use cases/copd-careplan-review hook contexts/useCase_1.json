@@ -39,6 +39,31 @@
         }
       ]
     },
+    "comorbidities": {
+      "resourceType": "Bundle",
+      "id": "comorbiditiesBundle",
+      "type": "collection",
+      "entry": [
+        {
+          "resource": {
+            "resourceType": "Condition",
+            "id": "ht",
+            "code": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "38341003",
+                  "display": "Hypertensive disorder"
+                }
+              ]
+            },
+            "subject": {
+              "reference": "Patient/1677163"
+            }
+          }
+        }
+      ]
+    },
     "immunizationStatus": {
       "resourceType": "Bundle",
       "id": "immunizationStatusBundle",
@@ -134,18 +159,7 @@
             "resourceType": "Bundle",
             "id": "selected_treatments",
             "type": "collection",
-            "entry": [{
-                "resource": {
-                  "resourceType": "Medication",
-                  "id": "DrugTLaba",
-                  "code": {
-                    "coding": [{
-                      "code": "Laba",
-                      "display": "administer medication containing a combination of LABA"
-                    }]
-                  }
-                }
-              },
+            "entry": [
               {
                 "resource": {
                   "resourceType": "Medication",
@@ -203,18 +217,7 @@
       "resourceType": "Bundle",
       "id": "suggested_treatments",
       "type": "collection",
-      "entry": [{
-          "resource": {
-            "resourceType": "Medication",
-            "id": "DrugTLaba",
-            "code": {
-              "coding": [{
-                "code": "Laba",
-                "display": "administer medication containing a combination of LABA"
-              }]
-            }
-          }
-        },
+      "entry": [
         {
           "resource": {
             "resourceType": "Medication",
