@@ -226,7 +226,7 @@
             "code": {
               "coding": [{
                 "code": "LabaIcs",
-                "display": "administer medication containing a combination of LABA"
+                "display": "administer medication containing LABA"
               }]
             }
           }

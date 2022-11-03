@@ -4,7 +4,7 @@
     "context": {
       "encounterId": "285064-0", 
       "patientId": "1677163",
-      "birthDate": "1970-10-03T00:00:00+01:00", 
+      "birthDate": "1980-10-03T00:00:00+01:00", 
       "smokingStatus": {
         "resourceType": "Observation",
         "id": "smoking_status",
@@ -22,8 +22,8 @@
           "coding": [
             {
               "system": "http://snomed.info/sct",
-              "code": "8392000",
-              "display": "Non-smoker"
+              "code": "77176002",
+              "display": "Smoker"
             }
           ]
         },
@@ -44,49 +44,6 @@
           }
         ]
       },
-      "comorbidities": {
-        "resourceType": "Bundle",
-        "id": "comorbiditiesBundle",
-        "type": "collection",
-        "entry": [
-          {
-            "resource": {
-              "resourceType": "Condition",
-              "id": "cvd",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://snomed.info/sct",
-                    "code": "49601007",
-                    "display": "Disorder of cardiovascular system"
-                  }
-                ]
-              },
-              "subject": {
-                "reference": "Patient/1677163"
-              }
-            }
-          },
-          {
-            "resource": {
-              "resourceType": "Condition",
-              "id": "ckd",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://snomed.info/sct",
-                    "code": "709044004",
-                    "display": "Chronic kidney disease"
-                  }
-                ]
-              },
-              "subject": {
-                "reference": "Patient/1677163"
-              }
-            }
-          }
-        ]
-      },
       "immunizationStatus": {
         "resourceType": "Bundle",
         "id": "immunizationStatusBundle",
@@ -96,7 +53,7 @@
             "resource": {
               "resourceType": "Immunization",
               "id": "influenza_immunization",
-              "status": "completed",
+              "status": "not-done",
               "vaccineCode": {
                 "coding": [
                   {
@@ -197,12 +154,40 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugCatLabaLamaIcs",
+                    "id": "DrugTSaba",
                     "code": {
                       "coding": [
                         {
-                          "code": "LabaLamaIcs",
-                          "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                          "code": "Saba",
+                          "display": "administer medication containing SABA"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugTSama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "Sama",
+                          "display": "administer medication containing SAMA"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugCatSabaSama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "SabaSama",
+                          "display": "administer medication containing a combination of SABA + SAMA"
                         }
                       ]
                     }
@@ -221,12 +206,12 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugTLaba",
+                    "id": "DrugTSaba",
                     "code": {
                       "coding": [
                         {
-                          "code": "Laba",
-                          "display": "administer medication containing LABA"
+                          "code": "Saba",
+                          "display": "administer medication containing SABA"
                         }
                       ]
                     }
@@ -235,13 +220,12 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugTLama",
+                    "id": "DrugTSama",
                     "code": {
                       "coding": [
                         {
-                          "system": "http://anonymous.org/data/DrugTLama",
-                          "code": "Lama",
-                          "display": "administer medication containing a  of LAMA"
+                          "code": "Sama",
+                          "display": "administer medication containing SAMA"
                         }
                       ]
                     }
@@ -250,13 +234,12 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugCatLabaLama",
+                    "id": "DrugCatSabaSama",
                     "code": {
                       "coding": [
                         {
-                          "system": "http://anonymous.org/data/DrugCatLabaLama",
-                          "code": "LabaLama",
-                          "display": "administer medication containing a combination of LABA and LAMA"
+                          "code": "SabaSama",
+                          "display": "administer medication containing a combination of SABA + SAMA"
                         }
                       ]
                     }

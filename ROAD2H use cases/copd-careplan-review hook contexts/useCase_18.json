@@ -4,7 +4,7 @@
     "context": {
       "encounterId": "285064-0", 
       "patientId": "1677163",
-      "birthDate": "1970-10-03T00:00:00+01:00", 
+      "birthDate": "1960-10-03T00:00:00+01:00", 
       "smokingStatus": {
         "resourceType": "Observation",
         "id": "smoking_status",
@@ -52,31 +52,13 @@
           {
             "resource": {
               "resourceType": "Condition",
-              "id": "cvd",
+              "id": "op",
               "code": {
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "49601007",
-                    "display": "Disorder of cardiovascular system"
-                  }
-                ]
-              },
-              "subject": {
-                "reference": "Patient/1677163"
-              }
-            }
-          },
-          {
-            "resource": {
-              "resourceType": "Condition",
-              "id": "ckd",
-              "code": {
-                "coding": [
-                  {
-                    "system": "http://snomed.info/sct",
-                    "code": "709044004",
-                    "display": "Chronic kidney disease"
+                    "code": "64859006",
+                    "display": "Osteoporosis"
                   }
                 ]
               },
@@ -96,7 +78,7 @@
             "resource": {
               "resourceType": "Immunization",
               "id": "influenza_immunization",
-              "status": "completed",
+              "status": "not-done",
               "vaccineCode": {
                 "coding": [
                   {
@@ -151,8 +133,8 @@
                 "coding": [
                   {
                     "system": "http://snomed.info/sct",
-                    "code": "1097871000000101",
-                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group A"
+                    "code": "1097891000000102",
+                    "display": "Global Initiative for Chronic Obstructive Lung Disease 2017 group C"
                   }
                 ]
               },
@@ -197,12 +179,40 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugCatLabaLamaIcs",
+                    "id": "DrugCatLabaIcs",
                     "code": {
                       "coding": [
                         {
-                          "code": "LabaLamaIcs",
-                          "display": "administer medication containing a combination of LABA + LAMA + ICS"
+                          "code": "LabaIcs",
+                          "display": "administer medication containing a combination of LABA + ICS"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugCatLabaLama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "LabaLama",
+                          "display": "administer medication containing a combination of LABA + LAMA"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugTLama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "Lama",
+                          "display": "administer medication containing LAMA"
                         }
                       ]
                     }
@@ -221,27 +231,12 @@
                 {
                   "resource": {
                     "resourceType": "Medication",
-                    "id": "DrugTLaba",
+                    "id": "DrugCatLabaIcs",
                     "code": {
                       "coding": [
                         {
-                          "code": "Laba",
-                          "display": "administer medication containing LABA"
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "resource": {
-                    "resourceType": "Medication",
-                    "id": "DrugTLama",
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://anonymous.org/data/DrugTLama",
-                          "code": "Lama",
-                          "display": "administer medication containing a  of LAMA"
+                          "code": "LabaIcs",
+                          "display": "administer medication containing a combination of LABA + ICS"
                         }
                       ]
                     }
@@ -254,9 +249,22 @@
                     "code": {
                       "coding": [
                         {
-                          "system": "http://anonymous.org/data/DrugCatLabaLama",
                           "code": "LabaLama",
-                          "display": "administer medication containing a combination of LABA and LAMA"
+                          "display": "administer medication containing a combination of LABA + LAMA"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "resource": {
+                    "resourceType": "Medication",
+                    "id": "DrugTLama",
+                    "code": {
+                      "coding": [
+                        {
+                          "code": "Lama",
+                          "display": "administer medication containing LAMA"
                         }
                       ]
                     }
