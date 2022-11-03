@@ -19,8 +19,8 @@
       "valueCodeableConcept": {
         "coding": [{
           "system": "http://snomed.info/sct",
-          "code": "77176002",
-          "display": "Smoker"
+          "code": "8392000",
+          "display": "Non-smoker"
         }]
       },
       "referenceRange": [{
@@ -211,7 +211,7 @@
                   "code": {
                     "coding": [{
                       "code": "Lama",
-                      "display": "administer medication containing a combination of LAMA"
+                      "display": "administer medication containing LAMA"
                     }]
                   }
                 }
@@ -268,7 +268,7 @@
             "code": {
               "coding": [{
                 "code": "Lama",
-                "display": "administer medication containing a combination of LAMA"
+                "display": "administer medication containing LAMA"
               }]
             }
           }
