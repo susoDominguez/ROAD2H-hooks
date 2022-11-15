@@ -1,0 +1,949 @@
+{
+    "cards": [{
+        "summary": "Personalised COPD decision support",
+        "indicator": "info",
+        "source": {
+            "label": "GOLD 2017 COPD Guideline"
+        },
+        "suggestions": [{
+            "label": "COPD care plan decision support",
+            "uuid": "CIG-1668101436490",
+            "actions": [{
+                "type": "update",
+                "description": "Update COPD care plan",
+                "resource": {
+                    "resourceType": "Bundle",
+                    "id": "COPDbundle",
+                    "type": "collection",
+                    "entry": [{
+                            "resource": {
+                                "resourceType": "Patient",
+                                "id": "1677163",
+                                "active": true
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugTFluVac",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugTFluVac",
+                                        "code": "FluVac",
+                                        "display": "administer influenza vaccine"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugTIcs",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugTIcs",
+                                        "code": "Ics",
+                                        "display": "administer inhaled corticosteroids"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugCatLabaIcs",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugCatLabaIcs",
+                                        "code": "LabaIcs",
+                                        "display": "administer a combination of LABA and ICS"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugTLama",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugTLama",
+                                        "code": "Lama",
+                                        "display": "administer LAMA"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugCatLabaLama",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugCatLabaLama",
+                                        "code": "LabaLama",
+                                        "display": "administer a combination of LABA and LAMA"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugCatBetaAgonist",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugCatBetaAgonist",
+                                        "code": "BetaAgonist",
+                                        "display": "administer Beta Agonists when cardiovascular disease is present"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Medication",
+                                "id": "DrugCatLabaLamaIcs",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/DrugCatLabaLamaIcs",
+                                        "code": "LabaLamaIcs",
+                                        "display": "administer a combination of LABA, LAMA and ICS"
+                                    }]
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitHghRskFlu",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitHghRskFlu",
+                                        "code": "SitHghRskFlu",
+                                        "display": "having a high risk of contracting influenza disease"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitPrQol",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitPrQol",
+                                        "code": "SitPrQol",
+                                        "display": "having a poor quality of life"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitLwRskPneumn",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitLwRskPneumn",
+                                        "code": "SitLwRskPneumn",
+                                        "display": "having a low risk of contracting pneumonia"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitVerySevAls",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitVerySevAls",
+                                        "code": "SitVerySevAls",
+                                        "display": "having a very severe airflow limitation severity"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitPrLngHlth",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitPrLngHlth",
+                                        "code": "SitPrLngHlth",
+                                        "display": "having a poor pulmonary health"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "Condition",
+                                "id": "SitLwRskCrd",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitLwRskCrd",
+                                        "code": "SitLwRskCrd",
+                                        "display": "low risk of having cardiac rhythm disturbances"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitHghRskFlu2SitLwRskFluMp",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "therapeutic-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                        "reference": "MedicationRequest/RecCOPD-FluVacDecPropRskFluShould"
+                                    }],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitHghRskFlu"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitLwRskFlu",
+                                        "code": "SitLwRskFlu",
+                                        "display": "having a low risk of contracting influenza disease"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropRskFlu",
+                                            "code": "PropRskFlu",
+                                            "display": "risk of contracting influenza disease"
+                                        }]
+                                    },
+                                    "degreeOfChange": "decrease"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitPrQol2SitNrmQolMp",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "therapeutic-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                        "reference": "ServiceRequest/RecCOPD-SmokeThrpyIncPropQolShould"
+                                    }],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitPrQol"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitNrmQol",
+                                        "code": "SitNrmQol",
+                                        "display": "having a standard quality of life"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropQol",
+                                            "code": "PropQol",
+                                            "display": "quality of life"
+                                        }]
+                                    },
+                                    "degreeOfChange": "increase"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitLwRskPneumn2SitHghRskPneumnMn",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "adverse-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                        "reference": "MedicationRequest/RecCOPD-IcsIncPropRskPneumnShouldnot"
+                                    }],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitLwRskPneumn"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitHghRskPneumn",
+                                        "code": "SitHghRskPneumn",
+                                        "display": "having a high risk of contracting pneumonia"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropRskPneumn",
+                                            "code": "PropRskPneumn",
+                                            "display": "risk of pneumonia"
+                                        }]
+                                    },
+                                    "degreeOfChange": "increase"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitVerySevAls2SitSevAlsMp",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "therapeutic-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                            "reference": "MedicationRequest/RecCOPD-LabaIcsDecVerySevPropAlsShould"
+                                        },
+                                        {
+                                            "reference": "MedicationRequest/RecCOPD-LamaDecVerySevPropAlsShould"
+                                        },
+                                        {
+                                            "reference": "MedicationRequest/RecCOPD-LabaLamaDecVerySevPropAlsShould"
+                                        },
+                                        {
+                                            "reference": "MedicationRequest/RecCOPD-LabaLamaIcsDecVerySevPropAlsShould"
+                                        }
+                                    ],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitVerySevAls"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitSevAls",
+                                        "code": "SitSevAls",
+                                        "display": "having a severe airflow limitation severity"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropAls",
+                                            "code": "PropAls",
+                                            "display": "airflow limitation severity"
+                                        }]
+                                    },
+                                    "degreeOfChange": "decrease"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitPrLngHlth2SitNrmLngHlthMp",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "therapeutic-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                        "reference": "ServiceRequest/RecCOPD-LngRehabIncPropLngHlthShould"
+                                    }],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitPrLngHlth"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitNrmLngHlth",
+                                        "code": "SitNrmLngHlth",
+                                        "display": "having a standard pulmonary health"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropLngHlth",
+                                            "code": "PropLngHlth",
+                                            "display": "pulmonary health"
+                                        }]
+                                    },
+                                    "degreeOfChange": "increase"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ForecastEffect",
+                                "id": "SitLwRskCrd2SitHghRskCrdMn",
+                                "typeOfEffect": "main-effect",
+                                "typeOfEvent": "adverse-effect",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "appliesTo": {
+                                    "careActionInstance": [{
+                                        "reference": "MedicationRequest/RecCOPD-BetaAgonistIncPropRskCrdShouldnot"
+                                    }],
+                                    "conditionAddressed": {
+                                        "reference": "Condition/SitLwRskCrd"
+                                    }
+                                },
+                                "expectedOutcomeCode": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/SitHghRskCrd",
+                                        "code": "SitHghRskCrd",
+                                        "display": "high risk of having cardiac rhythm disturbances"
+                                    }]
+                                },
+                                "targetMeasurement": {
+                                    "measuredProperty": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/data/PropRskCrd",
+                                            "code": "PropRskCrd",
+                                            "display": "risk of cardiac rhythm disturbances"
+                                        }]
+                                    },
+                                    "degreeOfChange": "increase"
+                                },
+                                "probability": "always",
+                                "evidence": "high"
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ServiceRequest",
+                                "id": "RecCOPD-SmokeThrpyIncPropQolShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitPrQol"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitPrQol2SitNrmQolMp"
+                                }],
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/NonDrugTSmokeThrpy",
+                                        "code": "SmokeThrpy",
+                                        "display": "administer smoking cessation therapy"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "ServiceRequest",
+                                "id": "RecCOPD-LngRehabIncPropLngHlthShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitPrLngHlth"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitPrLngHlth2SitNrmLngHlthMp"
+                                }],
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/data/NonDrugTLngRehab",
+                                        "code": "LngRehab",
+                                        "display": "administer pulmonary rehabilitation"
+                                    }]
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                }
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-FluVacDecPropRskFluShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitHghRskFlu"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitHghRskFlu2SitLwRskFluMp"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugTFluVac"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": []
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-IcsIncPropRskPneumnShouldnot",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": true,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitLwRskPneumn"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitLwRskPneumn2SitHghRskPneumnMn"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugTIcs"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": [{
+                                        "reference": "DetectedIssue/contradiction2"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/contradiction3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-LabaIcsDecVerySevPropAlsShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitVerySevAls"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitVerySevAls2SitSevAlsMp"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugCatLabaIcs"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": [{
+                                        "reference": "DetectedIssue/alternative1"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/contradiction2"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-LamaDecVerySevPropAlsShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitVerySevAls"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitVerySevAls2SitSevAlsMp"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugTLama"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": [{
+                                        "reference": "DetectedIssue/repetition0"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/alternative1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-LabaLamaDecVerySevPropAlsShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitVerySevAls"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitVerySevAls2SitSevAlsMp"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugCatLabaLama"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": [{
+                                        "reference": "DetectedIssue/repetition0"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/alternative1"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-BetaAgonistIncPropRskCrdShouldnot",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": true,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitLwRskCrd"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitLwRskCrd2SitHghRskCrdMn"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugCatBetaAgonist"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": []
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "MedicationRequest",
+                                "id": "RecCOPD-LabaLamaIcsDecVerySevPropAlsShould",
+                                "status": "active",
+                                "intent": "plan",
+                                "instantiatesUri": "https://goldcopd.org/wp-content/uploads/2016/12/wms-GOLD-2017-Pocket-Guide.pdf",
+                                "doNotPerform": false,
+                                "reasonReference": [{
+                                    "reference": "Condition/SitVerySevAls"
+                                }],
+                                "forecast-effects": [{
+                                    "reference": "ForecastEffect/SitVerySevAls2SitSevAlsMp"
+                                }],
+                                "medicationReference": {
+                                    "reference": "Medication/DrugCatLabaLamaIcs"
+                                },
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "detectedIssue": [{
+                                        "reference": "DetectedIssue/repetition0"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/alternative1"
+                                    },
+                                    {
+                                        "reference": "DetectedIssue/contradiction3"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "DetectedIssue",
+                                "id": "repetition0",
+                                "status": "preliminary",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                        "code": "DUPTHPY",
+                                        "display": "Duplicate Therapy Alert"
+                                    }]
+                                },
+                                "implicated": [{
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaIcsDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LamaDecVerySevPropAlsShould"
+                                    }
+                                ],
+                                "mitigation": [{
+                                    "action": {
+                                        "coding": [{
+                                            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                            "code": "13",
+                                            "display": "Stopped Concurrent Therapy"
+                                        }]
+                                    }
+                                }]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "DetectedIssue",
+                                "id": "alternative1",
+                                "status": "preliminary",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://anonymous.org/CodeSystem/interactions",
+                                        "code": "ALTHRPY",
+                                        "display": "Alternative Therapies With Same Intended Effect"
+                                    }]
+                                },
+                                "implicated": [{
+                                        "reference": "MedicationRequest/RecCOPD-LabaIcsDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaIcsDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LamaDecVerySevPropAlsShould"
+                                    }
+                                ],
+                                "mitigation": [{
+                                    "action": {
+                                        "coding": [{
+                                            "system": "http://anonymous.org/CodeSystem/interactions",
+                                            "code": "NOTREQ",
+                                            "display": "Mitigation Not Required"
+                                        }]
+                                    }
+                                }]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "DetectedIssue",
+                                "id": "contradiction2",
+                                "status": "preliminary",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                        "code": "DACT",
+                                        "display": "Drug Action Detected Issue"
+                                    }]
+                                },
+                                "implicated": [{
+                                        "reference": "MedicationRequest/RecCOPD-IcsIncPropRskPneumnShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaIcsDecVerySevPropAlsShould"
+                                    }
+                                ],
+                                "mitigation": [{
+                                    "action": {
+                                        "coding": [{
+                                            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                            "code": "13",
+                                            "display": "Stopped Concurrent Therapy"
+                                        }]
+                                    }
+                                }]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "DetectedIssue",
+                                "id": "contradiction3",
+                                "status": "preliminary",
+                                "code": {
+                                    "coding": [{
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                        "code": "DACT",
+                                        "display": "Drug Action Detected Issue"
+                                    }]
+                                },
+                                "implicated": [{
+                                        "reference": "MedicationRequest/RecCOPD-IcsIncPropRskPneumnShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaIcsDecVerySevPropAlsShould"
+                                    }
+                                ],
+                                "mitigation": [{
+                                    "action": {
+                                        "coding": [{
+                                            "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+                                            "code": "13",
+                                            "display": "Stopped Concurrent Therapy"
+                                        }]
+                                    }
+                                }]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "CarePlan",
+                                "id": "CarePlan0",
+                                "status": "active",
+                                "intent": "plan",
+                                "title": "suggested treatments: LABA + LAMA ",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "activity": [{
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-IcsIncPropRskPneumnShouldnot"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-SmokeThrpyIncPropQolShould"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-LngRehabIncPropLngHlthShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-BetaAgonistIncPropRskCrdShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-FluVacDecPropRskFluShould"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "CarePlan",
+                                "id": "CarePlan1",
+                                "status": "active",
+                                "intent": "plan",
+                                "title": "suggested treatments: LAMA ",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "activity": [{
+                                        "reference": "MedicationRequest/RecCOPD-LamaDecVerySevPropAlsShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-IcsIncPropRskPneumnShouldnot"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-SmokeThrpyIncPropQolShould"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-LngRehabIncPropLngHlthShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-BetaAgonistIncPropRskCrdShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-FluVacDecPropRskFluShould"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "CarePlan",
+                                "id": "CarePlan2",
+                                "status": "active",
+                                "intent": "plan",
+                                "title": "suggested treatments: LABA + ICS ",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "activity": [{
+                                        "reference": "ServiceRequest/RecCOPD-SmokeThrpyIncPropQolShould"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-LngRehabIncPropLngHlthShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-BetaAgonistIncPropRskCrdShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-FluVacDecPropRskFluShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaIcsDecVerySevPropAlsShould"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "resource": {
+                                "resourceType": "CarePlan",
+                                "id": "CarePlan3",
+                                "status": "active",
+                                "intent": "plan",
+                                "title": "suggested treatments: LABA + LAMA + ICS ",
+                                "subject": {
+                                    "reference": "Patient/1677163"
+                                },
+                                "activity": [{
+                                        "reference": "ServiceRequest/RecCOPD-SmokeThrpyIncPropQolShould"
+                                    },
+                                    {
+                                        "reference": "ServiceRequest/RecCOPD-LngRehabIncPropLngHlthShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-BetaAgonistIncPropRskCrdShouldnot"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-FluVacDecPropRskFluShould"
+                                    },
+                                    {
+                                        "reference": "MedicationRequest/RecCOPD-LabaLamaIcsDecVerySevPropAlsShould"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }]
+        }],
+        "selectionBehaviour": "at-most-one"
+    }]
+}
